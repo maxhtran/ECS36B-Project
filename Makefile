@@ -19,7 +19,7 @@ DEFINES				=
 INCLUDE				= -I $(INC_DIR)
 ARFLAGS				= rcs
 CFLAGS				= -Wall
-CPPFLAGS			= --std=c++17
+CPPFLAGS			= --std=c++20
 LDFLAGS				=
 
 TEST_CFLAGS			= $(CFLAGS) -O0 -g --coverage
@@ -31,8 +31,28 @@ TEST_SVG_OBJ		= $(TESTOBJ_DIR)/svg.o
 TEST_SVG_TEST_OBJ	= $(TESTOBJ_DIR)/SVGTest.o
 TEST_OBJ_FILES		= $(TEST_SVG_OBJ) $(TEST_SVG_TEST_OBJ)
 
+TEST_STRSINK_OBJ 		= $(TESTOBJ_DIR)/StringDataSink.o 
+TEST_STRSINK_TEST_OBJ	= $(TESTOBJ_DIR)/StringDataSinkTest.o 
+TEST_STRSINK_OBJ_FILES 	= $(TEST_STRSINK_OBJ) $(TEST_STRSINK_TEST_OBJ)
+
+TEST_STRSRC_OBJ			= $(TESTOBJ_DIR)/StringDataSource.o 
+TEST_STRSRC_TEST_OBJ	= $(TESTOBJ_DIR)/StringDataSourceTest.o
+TEST_STRSRC_OBJ_FILES	= $(TEST_STRSRC_OBJ) $(TEST_STRSRC_TEST_OBJ)
+
+TEST_SVGWRITER_OBJ			= $(TESTOBJ_DIR)/SVGWriter.o 
+TEST_SVGWRITER_TEST_OBJ		= $(TESTOBJ_DIR)/SVGWriterTest.o
+TEST_SVGWRITER_OBJ_FILES	= $(TEST_SVGWRITER_OBJ) $(TEST_SVGWRITER_TEST_OBJ)
+
+TEST_XML_OBJ		= $(TESTOBJ_DIR)/XMLReader.o 
+TEST_XML_TEST_OBJ	= $(TESTOBJ_DIR)/XMLTest.o 
+TEST_XML_OBJ_FILES	= $(TEST_XML_OBJ) $(TEST_XML_TEST_OBJ)
+
 # Define the targets
-TEST_TARGET			= $(TESTBIN_DIR)/testsvg
+TEST_SVG_TARGET			= $(TESTBIN_DIR)/testsvg
+TEST_STRSINK_TARGET		= $(TESTBIN_DIR)/teststrdatasink
+TEST_STRSRC_TARGET		= $(TESTBIN_DIR)/teststrdatasource
+TEST_SVGWRITER_TARGET	= $(TESTBIN_DIR)/testsvgwriter
+TEST_XML_TARGET			= $(TESTBIN_DIR)/testxml
 
 
 # Define the non-test object files
@@ -45,22 +65,54 @@ EXECUTABLE 			= $(BIN_DIR)/svg
 CHECKMARK_ANSWER	= expected_checkmark.svg
 CHECKMARK_OUTPUT	= checkmark.svg
 
-all: directories runtests run runcheckmark
+all: directories run_svgtest run_srctest run_sinktest run_xmltest run_svgwritertest gen_html
 
-runtests: $(TEST_TARGET)
-	$(TEST_TARGET)
+run_svgtest: $(TEST_SVG_TARGET)
+	$(TEST_SVG_TARGET)
+
+run_sinktest: $(TEST_STRSINK_TARGET)
+	$(TEST_STRSINK_TARGET)
+
+run_srctest: $(TEST_STRSRC_TARGET)
+	$(TEST_STRSRC_TARGET)
+
+run_svgwritertest: $(TEST_SVGWRITER_TARGET)
+	$(TEST_SVGWRITER_TARGET)
+
+run_xmltest: $(TEST_XML_TARGET)
+	$(TEST_XML_TARGET)
+	
+gen_html:
 	lcov --capture --directory . --output-file $(TESTCOVER_DIR)/coverage.info --ignore-errors inconsistent,source
 	lcov --remove $(TESTCOVER_DIR)/coverage.info '/usr/*' '*/testsrc/*' --output-file $(TESTCOVER_DIR)/coverage.info
 	genhtml $(TESTCOVER_DIR)/coverage.info --output-directory $(TESTCOVER_DIR)
 
-$(TEST_TARGET): $(TEST_OBJ_FILES)
-	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_TARGET)
+$(TEST_SVG_TARGET): $(TEST_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_SVG_TARGET)
+
+$(TEST_STRSINK_TARGET): $(TEST_STRSINK_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_STRSINK_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_STRSINK_TARGET)
+
+$(TEST_STRSRC_TARGET): $(TEST_STRSRC_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_STRSRC_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_STRSRC_TARGET)
+
+$(TEST_SVGWRITER_TARGET): libsvg.a $(TEST_SVGWRITER_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) libsvg.a $(TEST_SVGWRITER_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_SVGWRITER_TARGET)
+
+$(TEST_XML_TARGET): $(TEST_XML_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_XML_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_XML_TARGET)
 
 $(TEST_SVG_OBJ): $(SRC_DIR)/svg.c
 	$(CC) $(TEST_CFLAGS) $(DEFINES) $(INCLUDE) -c $(SRC_DIR)/svg.c -o $(TEST_SVG_OBJ)
 
 $(TEST_SVG_TEST_OBJ): $(TESTSRC_DIR)/SVGTest.cpp
 	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(DEFINES) $(INCLUDE) -c $(TESTSRC_DIR)/SVGTest.cpp -o $(TEST_SVG_TEST_OBJ)
+
+$(TESTOBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(DEFINES) $(INCLUDE) -c $< -o $@
+
+$(TESTOBJ_DIR)/%.o: $(TESTSRC_DIR)/%.cpp
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(DEFINES) $(INCLUDE) -c $< -o $@
 
 
 run: $(EXECUTABLE)
@@ -78,10 +130,10 @@ $(MAIN_OBJ): $(SRC_DIR)/main.c
 $(LIB_DIR)/libsvg.a: $(OBJ_DIR)/svg.o
 	$(AR) $(ARFLAGS) $(LIB_DIR)/libsvg.a $(OBJ_DIR)/svg.o
 
-
 runcheckmark: $(EXECUTABLE)
 	$(EXECUTABLE) 
 	@xmldiff --check $(CHECKMARK_OUTPUT) $(CHECKMARK_ANSWER) > /dev/null 2>&1 && echo "SVGs are identical ✅" || (echo "SVGs differ ❌"; exit 1)
+
 
 directories:
 	mkdir -p $(BIN_DIR)
