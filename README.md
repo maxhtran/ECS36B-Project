@@ -2,7 +2,7 @@
 
 Student 1: Partner1 Name (123456789)
 
-Student 2: Partner2 Name (123456987)
+Student 2: Devin Nguyen (92393339)
 
 ## Project Status
 This the current status of the project ...
