@@ -2,7 +2,7 @@
 #include "SVGWriter.h"
 #include "StringDataSink.h"
 
-TEST(SVGWriterTest, CreateDestroyTest){
+TEST(SVGWriterTest, CreateDestroyTest){ // Verifies SVG header and footer are written on construction/destruction
     std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
     {
         CSVGWriter Writer(Sink, 100, 50);
@@ -12,7 +12,7 @@ TEST(SVGWriterTest, CreateDestroyTest){
                                 "</svg>");
 }
 
-TEST(SVGWriterTest, CircleTest){
+TEST(SVGWriterTest, CircleTest){ // Verifies circle is written correctly
     std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
     {
         SSVGPoint center = {5,5};
@@ -30,7 +30,7 @@ TEST(SVGWriterTest, CircleTest){
                             "</svg>");
 }
 
-TEST(SVGWriterTest, RectangleTest){
+TEST(SVGWriterTest, RectangleTest){  // Verifies rectangle element is written correctly
     std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
     {
         SSVGPoint point = {1,1};
@@ -48,7 +48,7 @@ TEST(SVGWriterTest, RectangleTest){
                             "</svg>");
 }
 
-TEST(SVGWriterTest, LineTest){
+TEST(SVGWriterTest, LineTest){ // Verifies line element is written correctly
     std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
     {
         SSVGPoint start = {1,1};
@@ -66,7 +66,7 @@ TEST(SVGWriterTest, LineTest){
                             "</svg>");
 }
 
-TEST(SVGWriterTest, SimplePathTest){
+TEST(SVGWriterTest, SimplePathTest){ // Verifies path is written correctly
     std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
     {
         SSVGPoint point1 = {1,1};
@@ -87,7 +87,7 @@ TEST(SVGWriterTest, SimplePathTest){
                             "</svg>");
 }
 
-TEST(SVGWriterTest, GroupTest){
+TEST(SVGWriterTest, GroupTest){ // Verifies group begin/end wrapping
     std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
     {
         SSVGPoint center = {5,5};
@@ -130,7 +130,7 @@ class CFailingSink : public CDataSink{
         }
 };
 
-TEST(SVGWriterTest, ErrorTests){
+TEST(SVGWriterTest, ErrorTests){ // Verifies failure handling for I/O errors, invalid parameters, and invalid group state
     SSVGPoint center = {5,5};
     TSVGReal radius = 1.0;
     SSVGPoint point1 = {1,1};
