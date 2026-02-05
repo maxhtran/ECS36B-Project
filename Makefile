@@ -47,12 +47,22 @@ TEST_XML_OBJ		= $(TESTOBJ_DIR)/XMLReader.o
 TEST_XML_TEST_OBJ	= $(TESTOBJ_DIR)/XMLTest.o 
 TEST_XML_OBJ_FILES	= $(TEST_XML_OBJ) $(TEST_XML_TEST_OBJ)
 
+TEST_XMLBS_OBJ			= $(TESTOBJ_DIR)/XMLBusSystem.o 
+TEST_XMLBS_TEST_OBJ		= $(TESTOBJ_DIR)/XMLBusSystemTest.o 
+TEST_XMLBS_OBJ_FILES	= $(TEST_XMLBS_OBJ) $(TEST_XMLBS_TEST_OBJ)
+
+TEST_OSM_OBJ		= $(TESTOBJ_DIR)/OpenStreetMap.o 
+TEST_OSM_TEST_OBJ	= $(TESTOBJ_DIR)/OpenStreetMapTest.o 
+TEST_OSM_OBJ_FILES	= $(TEST_OSM_OBJ) $(TEST_OSM_TEST_OBJ)
+
 # Define the targets
 TEST_SVG_TARGET			= $(TESTBIN_DIR)/testsvg
 TEST_STRSINK_TARGET		= $(TESTBIN_DIR)/teststrdatasink
 TEST_STRSRC_TARGET		= $(TESTBIN_DIR)/teststrdatasource
 TEST_SVGWRITER_TARGET	= $(TESTBIN_DIR)/testsvgwriter
 TEST_XML_TARGET			= $(TESTBIN_DIR)/testxml
+TEST_XMLBS_TARGET		= $(TESTBIN_DIR)/testxmlbs
+TEST_OSM_TARGET			= $(TESTBIN_DIR)/testosm
 
 
 # Define the non-test object files
@@ -65,7 +75,7 @@ EXECUTABLE 			= $(BIN_DIR)/svg
 CHECKMARK_ANSWER	= expected_checkmark.svg
 CHECKMARK_OUTPUT	= checkmark.svg
 
-all: directories run_svgtest run_srctest run_sinktest run_xmltest run_svgwritertest gen_html
+all: directories run_svgtest run_srctest run_sinktest run_xmltest run_svgwritertest run_xmlbstest run_osmtest gen_html
 
 run_svgtest: $(TEST_SVG_TARGET)
 	$(TEST_SVG_TARGET)
@@ -81,6 +91,12 @@ run_svgwritertest: $(TEST_SVGWRITER_TARGET)
 
 run_xmltest: $(TEST_XML_TARGET)
 	$(TEST_XML_TARGET)
+
+run_xmlbstest: $(TEST_XMLBS_TARGET)
+	$(TEST_XMLBS_TARGET)
+
+run_osmtest: $(TEST_OSM_TARGET)
+	$(TEST_OSM_TARGET)
 	
 gen_html:
 	lcov --capture --directory . --output-file $(TESTCOVER_DIR)/coverage.info --ignore-errors inconsistent,source
@@ -102,6 +118,12 @@ $(TEST_SVGWRITER_TARGET): $(LIB_DIR)/libsvg.a $(TEST_SVGWRITER_OBJ_FILES)
 $(TEST_XML_TARGET): $(TEST_XML_OBJ_FILES) $(TEST_STRSRC_OBJ)
 	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_XML_OBJ_FILES) $(TEST_STRSRC_OBJ) $(TEST_LDFLAGS) -lexpat -o $(TEST_XML_TARGET)
 
+$(TEST_XMLBS_TARGET): $(TEST_XMLBS_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_XMLBS_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_XMLBS_TARGET)
+
+$(TEST_OSM_TARGET): $(TEST_OSM_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_OSM_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_OSM_TARGET)
+	
 $(TEST_SVG_OBJ): $(SRC_DIR)/svg.c
 	$(CC) $(TEST_CFLAGS) $(DEFINES) $(INCLUDE) -c $(SRC_DIR)/svg.c -o $(TEST_SVG_OBJ)
 
