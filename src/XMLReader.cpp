@@ -65,7 +65,7 @@ struct CXMLReader::SImplementation{
     }
 
     bool End() const {
-        return entityQueue.empty(); // no more XML text to parse + no more XML entities to read = donea
+        return entityQueue.empty(); // no more XML text to parse + no more XML entities to read = done
     }
 
     bool ReadEntity(SXMLEntity &entity, bool skipcdata) {

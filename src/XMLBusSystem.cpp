@@ -40,9 +40,59 @@ struct CXMLBusSystem::SImplementation{
         }
     };
 
+    struct SRoute : public CBusSystem::SRoute {
+        std::string DName;
+        std::vector<SStop> DStops;
+
+        SRoute(std::string name, std::vector<SStop> stops) {
+            DName = name;
+            DStops = stops;
+        }
+        
+        ~SRoute(){};
+
+        std::string Name() const noexcept override {
+
+        }
+
+        std::size_t StopCount() const noexcept override {
+
+        }
+
+        TStopID GetStopID(std::size_t index) const noexcept override {
+
+        }
+    };
+
+    struct SPath : public CBusSystem::SPath {
+        std::vector<CStreetMap::SNode> DNodes;
+
+        SPath(std::vector<CStreetMap::SNode> nodes) {
+            DNodes = nodes;
+        }
+
+        ~SPath(){};
+
+        CStreetMap::TNodeID StartNodeID() const noexcept override {
+
+        }
+
+        CStreetMap::TNodeID EndNodeID() const noexcept override {
+
+        }
+
+        std::size_t NodeCount() const noexcept override {
+
+        }
+
+        CStreetMap::TNodeID GetNodeID(std::size_t index) const noexcept override {
+            
+        }
+    };
+
     bool FindStartTag(std::shared_ptr< CXMLReader > xmlsource, const std::string &starttag){
         SXMLEntity TempEntity;
-        while(xmlsource->ReadEntity(TempEntity)){
+        while(xmlsource->ReadEntity(TempEntity, true)){
             if((TempEntity.DType == SXMLEntity::EType::StartElement)&&(TempEntity.DNameData == starttag)){
                 return true;
             }
@@ -52,7 +102,7 @@ struct CXMLBusSystem::SImplementation{
 
     bool FindEndTag(std::shared_ptr< CXMLReader > xmlsource, const std::string &starttag){
         SXMLEntity TempEntity;
-        while(xmlsource->ReadEntity(TempEntity)){
+        while(xmlsource->ReadEntity(TempEntity, true)){
             if((TempEntity.DType == SXMLEntity::EType::EndElement)&&(TempEntity.DNameData == starttag)){
                 return true;
             }
@@ -76,7 +126,7 @@ struct CXMLBusSystem::SImplementation{
         SXMLEntity TempEntity;
 
         do{
-            if(!systemsource->ReadEntity(TempEntity)){
+            if(!systemsource->ReadEntity(TempEntity, true)){
                 return;
             }
             if((TempEntity.DType == SXMLEntity::EType::StartElement) &&(TempEntity.DNameData == DStopsTag)){
@@ -114,7 +164,7 @@ struct CXMLBusSystem::SImplementation{
     }
 
     std::size_t StopCount() const noexcept{
-
+        return DStopsByIndex.size();
     }
 
     std::size_t RouteCount() const noexcept{
@@ -122,7 +172,7 @@ struct CXMLBusSystem::SImplementation{
     }
     
     std::shared_ptr<SStop> StopByIndex(std::size_t index) const noexcept{
-
+        
     }
     
     std::shared_ptr<SStop> StopByID(TStopID id) const noexcept{
@@ -160,11 +210,11 @@ std::size_t CXMLBusSystem::RouteCount() const noexcept{
 }
 
 std::shared_ptr<CBusSystem::SStop> CXMLBusSystem::StopByIndex(std::size_t index) const noexcept{
-
+    return DImplementation->StopByIndex(index);
 }
 
 std::shared_ptr<CBusSystem::SStop> CXMLBusSystem::StopByID(TStopID id) const noexcept{
-
+    return DImplementation->StopByID(id);
 }
 
 std::shared_ptr<CBusSystem::SRoute> CXMLBusSystem::RouteByIndex(std::size_t index) const noexcept{
