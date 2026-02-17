@@ -32,7 +32,7 @@ class CXMLBusSystem : public CBusSystem{
 - `std::unique_ptr< SImplementation > DImplementation;`: (unique) pointer to `SImplementation`
 - `CXMLBusSystem(std::shared_ptr< CXMLReader > systemsource, std::shared_ptr< CXMLReader > pathsource);`: class constructor for the XML bus system
     - systemsource: pointer to the XML reader for the bus system information
-    - pathsource: poitner to the XML reader for the path information
+    - pathsource: pointer to the XML reader for the path information
 - `~CXMLBusSystem();` class destructor
 - `std::size_t StopCount() const noexcept override;`: returns the number of stops in the system
 - `std::size_t RouteCount() const noexcept override;`: returns the number of routes in the system
