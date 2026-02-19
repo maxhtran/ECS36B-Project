@@ -34,66 +34,72 @@ struct COpenStreetMap::SImplementation {
         }
 
         std::size_t AttributeCount() const noexcept override {
-
+            return 0; // TODO
         }
 
         std::string GetAttributeKey(std::size_t index) const noexcept override {
-
+            return ""; // TODO
         }
 
         bool HasAttribute(const std::string &key) const noexcept override {
-
+            return false; // TODO 
         }
 
         std::string GetAttribute(const std::string &key) const noexcept override {
-
+            return ""; // TODO
         }
     };
 
     struct SWay : public CStreetMap::SWay {
         TWayID DID;
-        std::vector<SNode> DNodes;
+        std::vector<TNodeID> DNodeIDs;
         TAttributes DAttributes;
 
-        SWay(TWayID id, std::vector<SNode> nodes, TAttributes attributes) {
+        SWay(TWayID id, std::vector<TNodeID> nodeids, TAttributes attributes) {
             DID = id;
-            DNodes = nodes;
+            DNodeIDs = nodeids;
             DAttributes = attributes;
         }
 
         ~SWay(){};
 
         TWayID ID() const noexcept override {
-            
+            return DID;
         }
 
         std::size_t NodeCount() const noexcept override {
-
+            return DNodeIDs.size();
         }
 
         TNodeID GetNodeID(std::size_t index) const noexcept override {
-
+            if (index >= DNodeIDs.size()) {
+                return CStreetMap::InvalidNodeID;
+            }
+            return DNodeIDs.at(index);
         }
 
         std::size_t AttributeCount() const noexcept override {
-
+            return 0; // TODO
         }
 
         std::string GetAttributeKey(std::size_t index) const noexcept override {
-
+            return ""; // TODO
         }
 
         bool HasAttribute(const std::string &key) const noexcept override {
-
+            return false; // TODO
         }
 
         std::string GetAttribute(const std::string &key) const noexcept override {
-            
+            return ""; // TODO
         }
     };
 
     std::vector<std::shared_ptr<SNode>> DNodesByIndex;
     std::unordered_map<TNodeID, std::shared_ptr<SNode>> DNodesByID;
+
+    std::vector<std::shared_ptr<SWay>> DWaysByIndex;
+    std::unordered_map<TWayID, std::shared_ptr<SWay>> DWaysByID;
 
     bool FindStartTag(std::shared_ptr< CXMLReader > xmlsource, const std::string &starttag){
         SXMLEntity TempEntity;
@@ -130,6 +136,7 @@ struct COpenStreetMap::SImplementation {
                 FindEndTag(src, DNodeTag);
             }
         }
+        return false; // TODO
     }
 
     SImplementation(std::shared_ptr<CXMLReader> src) {
@@ -141,7 +148,7 @@ struct COpenStreetMap::SImplementation {
     }
 
     std::size_t WayCount() const noexcept {
-        return 0;
+        return DWaysByIndex.size();
     }
 
     std::shared_ptr<CStreetMap::SNode> NodeByIndex(std::size_t index) const noexcept {
@@ -162,11 +169,11 @@ struct COpenStreetMap::SImplementation {
     }
 
     std::shared_ptr<CStreetMap::SWay> WayByIndex(std::size_t index) const noexcept {
-
+        return nullptr; // TODO
     }
 
     std::shared_ptr<CStreetMap::SWay> WayByID(TWayID id) const noexcept {
-
+        return nullptr; // TODO
     }
 };
 
