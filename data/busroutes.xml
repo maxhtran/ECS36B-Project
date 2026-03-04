@@ -300,433 +300,433 @@
         <stop id="807737" node="2283899823" />
     </stops>
     <routes>
-        <route name="A">
-            <routestop stop="22258" />
-            <routestop stop="22169" />
-            <routestop stop="22000" />
-            <routestop stop="22005" />
-            <routestop stop="22007" />
-            <routestop stop="22011" />
-            <routestop stop="22031" />
-            <routestop stop="22033" />
-            <routestop stop="22076" />
-            <routestop stop="22075" />
-            <routestop stop="22073" />
-            <routestop stop="22073" />
-            <routestop stop="22234" />
-            <routestop stop="22237" />
-            <routestop stop="22070" />
-            <routestop stop="22300" />
-            <routestop stop="22067" />
-            <routestop stop="22235" />
-            <routestop stop="22066" />
-            <routestop stop="22243" />
-            <routestop stop="22061" />
-            <routestop stop="22062" />
+        <route name="A" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22258" delta="+0.0" />
+            <routestop stop="22169" delta="+1.0" />
+            <routestop stop="22000" delta="+2.0" />
+            <routestop stop="22005" delta="+5.0" />
+            <routestop stop="22007" delta="+6.0" />
+            <routestop stop="22011" delta="+7.0" />
+            <routestop stop="22031" delta="+8.0" />
+            <routestop stop="22033" delta="+9.0" />
+            <routestop stop="22076" delta="+11.0" />
+            <routestop stop="22075" delta="+12.0" />
+            <routestop stop="22073" delta="+14.0" />
+            <routestop stop="22073" delta="+15.0" />
+            <routestop stop="22234" delta="+16.0" />
+            <routestop stop="22237" delta="+17.0" />
+            <routestop stop="22070" delta="+18.0" />
+            <routestop stop="22300" delta="+19.0" />
+            <routestop stop="22067" delta="+20.0" />
+            <routestop stop="22235" delta="+21.0" />
+            <routestop stop="22066" delta="+22.0" />
+            <routestop stop="22243" delta="+23.0" />
+            <routestop stop="22061" delta="+25.0" />
+            <routestop stop="22062" delta="+26.0" />
         </route>
-        <route name="B">
-            <routestop stop="22274" />
-            <routestop stop="22230" />
-            <routestop stop="22185" />
-            <routestop stop="22189" />
-            <routestop stop="22188" />
-            <routestop stop="22186" />
-            <routestop stop="22191" />
-            <routestop stop="22193" />
-            <routestop stop="22194" />
-            <routestop stop="22195" />
-            <routestop stop="22192" />
-            <routestop stop="22187" />
-            <routestop stop="22190" />
-            <routestop stop="22292" />
-            <routestop stop="22179" />
-            <routestop stop="22167" />
+        <route name="B" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22274" delta="+0.0" />
+            <routestop stop="22230" delta="+3.0" />
+            <routestop stop="22185" delta="+4.0" />
+            <routestop stop="22189" delta="+5.0" />
+            <routestop stop="22188" delta="+6.0" />
+            <routestop stop="22186" delta="+7.0" />
+            <routestop stop="22191" delta="+8.0" />
+            <routestop stop="22193" delta="+9.0" />
+            <routestop stop="22194" delta="+10.0" />
+            <routestop stop="22195" delta="+11.0" />
+            <routestop stop="22192" delta="+12.0" />
+            <routestop stop="22187" delta="+13.0" />
+            <routestop stop="22190" delta="+14.0" />
+            <routestop stop="22292" delta="+15.0" />
+            <routestop stop="22179" delta="+16.0" />
+            <routestop stop="22167" delta="+19.0" />
         </route>
-        <route name="D">
-            <routestop stop="22256" />
-            <routestop stop="22239" />
-            <routestop stop="22361" />
-            <routestop stop="22225" />
-            <routestop stop="22229" />
-            <routestop stop="22226" />
-            <routestop stop="22227" />
-            <routestop stop="22228" />
-            <routestop stop="22208" />
-            <routestop stop="22210" />
-            <routestop stop="22211" />
-            <routestop stop="22223" />
-            <routestop stop="22224" />
-            <routestop stop="22316" />
-            <routestop stop="22240" />
-            <routestop stop="22173" />
-            <routestop stop="22256" />
+        <route name="D" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22256" delta="+0.0" />
+            <routestop stop="22239" delta="+2.0" />
+            <routestop stop="22361" delta="+3.0" />
+            <routestop stop="22225" delta="+6.0" />
+            <routestop stop="22229" delta="+8.0" />
+            <routestop stop="22226" delta="+10.0" />
+            <routestop stop="22227" delta="+11.0" />
+            <routestop stop="22228" delta="+12.0" />
+            <routestop stop="22208" delta="+13.0" />
+            <routestop stop="22210" delta="+14.0" />
+            <routestop stop="22211" delta="+15.0" />
+            <routestop stop="22223" delta="+16.0" />
+            <routestop stop="22224" delta="+17.0" />
+            <routestop stop="22316" delta="+19.0" />
+            <routestop stop="22240" delta="+22.0" />
+            <routestop stop="22173" delta="+24.0" />
+            <routestop stop="22256" delta="+25.0" />
         </route>
-        <route name="E">
-            <routestop stop="22274" />
-            <routestop stop="22014" />
-            <routestop stop="22016" />
-            <routestop stop="22018" />
-            <routestop stop="22020" />
-            <routestop stop="22027" />
-            <routestop stop="22117" />
-            <routestop stop="22116" />
-            <routestop stop="22115" />
-            <routestop stop="22112" />
-            <routestop stop="22099" />
-            <routestop stop="22100" />
-            <routestop stop="22101" />
-            <routestop stop="22233" />
-            <routestop stop="22118" />
-            <routestop stop="22122" />
-            <routestop stop="22019" />
-            <routestop stop="22017" />
-            <routestop stop="22015" />
-            <routestop stop="22013" />
-            <routestop stop="22167" />
+        <route name="E" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22274" delta="+0.0" />
+            <routestop stop="22014" delta="+2.0" />
+            <routestop stop="22016" delta="+3.0" />
+            <routestop stop="22018" delta="+4.0" />
+            <routestop stop="22020" delta="+5.0" />
+            <routestop stop="22027" delta="+6.0" />
+            <routestop stop="22117" delta="+7.0" />
+            <routestop stop="22116" delta="+8.0" />
+            <routestop stop="22115" delta="+9.0" />
+            <routestop stop="22112" delta="+10.0" />
+            <routestop stop="22099" delta="+12.0" />
+            <routestop stop="22100" delta="+13.0" />
+            <routestop stop="22101" delta="+14.0" />
+            <routestop stop="22233" delta="+15.0" />
+            <routestop stop="22118" delta="+16.0" />
+            <routestop stop="22122" delta="+17.0" />
+            <routestop stop="22019" delta="+19.0" />
+            <routestop stop="22017" delta="+20.0" />
+            <routestop stop="22015" delta="+21.0" />
+            <routestop stop="22013" delta="+22.0" />
+            <routestop stop="22167" delta="+24.0" />
         </route>
-        <route name="F">
-            <routestop stop="22274" />
-            <routestop stop="22165" />
-            <routestop stop="22163" />
-            <routestop stop="22161" />
-            <routestop stop="22314" />
-            <routestop stop="22145" />
-            <routestop stop="22126" />
-            <routestop stop="22133" />
-            <routestop stop="22132" />
-            <routestop stop="22131" />
-            <routestop stop="22130" />
-            <routestop stop="22129" />
-            <routestop stop="22128" />
-            <routestop stop="22127" />
-            <routestop stop="22312" />
-            <routestop stop="22313" />
-            <routestop stop="22113" />
-            <routestop stop="22114" />
-            <routestop stop="22123" />
-            <routestop stop="22125" />
-            <routestop stop="22148" />
-            <routestop stop="22162" />
-            <routestop stop="22164" />
-            <routestop stop="22166" />
-            <routestop stop="22167" />
+        <route name="F" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22274" delta="+0.0" />
+            <routestop stop="22165" delta="+2.0" />
+            <routestop stop="22163" delta="+3.0" />
+            <routestop stop="22161" delta="+4.0" />
+            <routestop stop="22314" delta="+5.0" />
+            <routestop stop="22145" delta="+7.0" />
+            <routestop stop="22126" delta="+8.0" />
+            <routestop stop="22133" delta="+9.0" />
+            <routestop stop="22132" delta="+10.0" />
+            <routestop stop="22131" delta="+11.0" />
+            <routestop stop="22130" delta="+12.0" />
+            <routestop stop="22129" delta="+14.0" />
+            <routestop stop="22128" delta="+16.0" />
+            <routestop stop="22127" delta="+18.0" />
+            <routestop stop="22312" delta="+19.0" />
+            <routestop stop="22313" delta="+21.0" />
+            <routestop stop="22113" delta="+22.0" />
+            <routestop stop="22114" delta="+23.0" />
+            <routestop stop="22123" delta="+24.0" />
+            <routestop stop="22125" delta="+25.0" />
+            <routestop stop="22148" delta="+26.0" />
+            <routestop stop="22162" delta="+27.0" />
+            <routestop stop="22164" delta="+28.0" />
+            <routestop stop="22166" delta="+29.0" />
+            <routestop stop="22167" delta="+30.0" />
         </route>
-        <route name="G">
-            <routestop stop="22273" />
-            <routestop stop="22160" />
-            <routestop stop="22301" />
-            <routestop stop="22157" />
-            <routestop stop="22153" />
-            <routestop stop="22154" />
-            <routestop stop="22134" />
-            <routestop stop="22136" />
-            <routestop stop="22139" />
-            <routestop stop="22140" />
-            <routestop stop="22142" />
-            <routestop stop="22144" />
-            <routestop stop="22143" />
-            <routestop stop="22141" />
-            <routestop stop="22138" />
-            <routestop stop="22137" />
-            <routestop stop="22135" />
-            <routestop stop="22155" />
-            <routestop stop="22156" />
-            <routestop stop="22158" />
-            <routestop stop="22302" />
-            <routestop stop="22159" />
-            <routestop stop="22167" />
+        <route name="G" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22273" delta="+0.0" />
+            <routestop stop="22160" delta="+2.0" />
+            <routestop stop="22301" delta="+3.0" />
+            <routestop stop="22157" delta="+4.0" />
+            <routestop stop="22153" delta="+5.0" />
+            <routestop stop="22154" delta="+6.0" />
+            <routestop stop="22134" delta="+7.0" />
+            <routestop stop="22136" delta="+8.0" />
+            <routestop stop="22139" delta="+9.0" />
+            <routestop stop="22140" delta="+10.0" />
+            <routestop stop="22142" delta="+11.0" />
+            <routestop stop="22144" delta="+12.0" />
+            <routestop stop="22143" delta="+13.0" />
+            <routestop stop="22141" delta="+14.0" />
+            <routestop stop="22138" delta="+15.0" />
+            <routestop stop="22137" delta="+16.0" />
+            <routestop stop="22135" delta="+17.0" />
+            <routestop stop="22155" delta="+18.0" />
+            <routestop stop="22156" delta="+19.0" />
+            <routestop stop="22158" delta="+20.0" />
+            <routestop stop="22302" delta="+21.0" />
+            <routestop stop="22159" delta="+22.0" />
+            <routestop stop="22167" delta="+24.0" />
         </route>
-        <route name="J">
-            <routestop stop="22256" />
-            <routestop stop="22175" />
-            <routestop stop="22160" />
-            <routestop stop="22301" />
-            <routestop stop="22157" />
-            <routestop stop="22153" />
-            <routestop stop="22154" />
-            <routestop stop="22134" />
-            <routestop stop="22136" />
-            <routestop stop="22139" />
-            <routestop stop="22140" />
-            <routestop stop="22142" />
-            <routestop stop="22144" />
+        <route name="J" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22256" delta="+0.0" />
+            <routestop stop="22175" delta="+3.0" />
+            <routestop stop="22160" delta="+4.0" />
+            <routestop stop="22301" delta="+5.0" />
+            <routestop stop="22157" delta="+6.0" />
+            <routestop stop="22153" delta="+7.0" />
+            <routestop stop="22154" delta="+8.0" />
+            <routestop stop="22134" delta="+9.0" />
+            <routestop stop="22136" delta="+10.0" />
+            <routestop stop="22139" delta="+11.0" />
+            <routestop stop="22140" delta="+12.0" />
+            <routestop stop="22142" delta="+13.0" />
+            <routestop stop="22144" delta="+14.0" />
         </route>
-        <route name="K">
-            <routestop stop="22274" />
-            <routestop stop="22178" />
-            <routestop stop="22225" />
-            <routestop stop="22229" />
-            <routestop stop="22226" />
-            <routestop stop="22227" />
-            <routestop stop="22228" />
-            <routestop stop="22208" />
-            <routestop stop="22210" />
-            <routestop stop="22211" />
-            <routestop stop="22216" />
-            <routestop stop="22217" />
-            <routestop stop="22220" />
-            <routestop stop="22221" />
-            <routestop stop="22177" />
-            <routestop stop="22167" />
+        <route name="K" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22274" delta="+0.0" />
+            <routestop stop="22178" delta="+3.0" />
+            <routestop stop="22225" delta="+5.0" />
+            <routestop stop="22229" delta="+7.0" />
+            <routestop stop="22226" delta="+9.0" />
+            <routestop stop="22227" delta="+10.0" />
+            <routestop stop="22228" delta="+11.0" />
+            <routestop stop="22208" delta="+12.0" />
+            <routestop stop="22210" delta="+13.0" />
+            <routestop stop="22211" delta="+14.0" />
+            <routestop stop="22216" delta="+16.0" />
+            <routestop stop="22217" delta="+17.0" />
+            <routestop stop="22220" delta="+18.0" />
+            <routestop stop="22221" delta="+19.0" />
+            <routestop stop="22177" delta="+21.0" />
+            <routestop stop="22167" delta="+23.0" />
         </route>
-        <route name="L">
-            <routestop stop="22258" />
-            <routestop stop="22169" />
-            <routestop stop="22000" />
-            <routestop stop="22013" />
-            <routestop stop="22022" />
-            <routestop stop="22024" />
-            <routestop stop="22121" />
-            <routestop stop="22119" />
-            <routestop stop="22111" />
-            <routestop stop="22105" />
-            <routestop stop="22102" />
-            <routestop stop="22094" />
-            <routestop stop="22357" />
-            <routestop stop="22092" />
-            <routestop stop="22106" />
-            <routestop stop="22260" />
-            <routestop stop="22249" />
-            <routestop stop="22294" />
-            <routestop stop="22261" />
-            <routestop stop="22250" />
-            <routestop stop="22081" />
-            <routestop stop="22082" />
-            <routestop stop="22085" />
-            <routestop stop="22091" />
-            <routestop stop="22088" />
-            <routestop stop="22087" />
-            <routestop stop="22280" />
-            <routestop stop="22281" />
-            <routestop stop="22103" />
-            <routestop stop="22104" />
-            <routestop stop="22110" />
-            <routestop stop="22118" />
-            <routestop stop="22120" />
-            <routestop stop="22023" />
-            <routestop stop="22014" />
-            <routestop stop="22001" />
-            <routestop stop="22168" />
-            <routestop stop="22256" />
+        <route name="L" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22258" delta="+0.0" />
+            <routestop stop="22169" delta="+1.0" />
+            <routestop stop="22000" delta="+2.0" />
+            <routestop stop="22013" delta="+5.0" />
+            <routestop stop="22022" delta="+6.0" />
+            <routestop stop="22024" delta="+7.0" />
+            <routestop stop="22121" delta="+8.0" />
+            <routestop stop="22119" delta="+9.0" />
+            <routestop stop="22111" delta="+10.0" />
+            <routestop stop="22105" delta="+11.0" />
+            <routestop stop="22102" delta="+12.0" />
+            <routestop stop="22094" delta="+13.0" />
+            <routestop stop="22357" delta="+14.0" />
+            <routestop stop="22092" delta="+16.0" />
+            <routestop stop="22106" delta="+17.0" />
+            <routestop stop="22260" delta="+18.0" />
+            <routestop stop="22249" delta="+20.0" />
+            <routestop stop="22294" delta="+21.0" />
+            <routestop stop="22261" delta="+22.0" />
+            <routestop stop="22250" delta="+23.0" />
+            <routestop stop="22081" delta="+25.0" />
+            <routestop stop="22082" delta="+26.0" />
+            <routestop stop="22085" delta="+27.0" />
+            <routestop stop="22091" delta="+28.0" />
+            <routestop stop="22088" delta="+29.0" />
+            <routestop stop="22087" delta="+30.0" />
+            <routestop stop="22280" delta="+31.0" />
+            <routestop stop="22281" delta="+32.0" />
+            <routestop stop="22103" delta="+33.0" />
+            <routestop stop="22104" delta="+34.0" />
+            <routestop stop="22110" delta="+35.0" />
+            <routestop stop="22118" delta="+36.0" />
+            <routestop stop="22120" delta="+37.0" />
+            <routestop stop="22023" delta="+38.0" />
+            <routestop stop="22014" delta="+39.0" />
+            <routestop stop="22001" delta="+43.0" />
+            <routestop stop="22168" delta="+44.0" />
+            <routestop stop="22256" delta="+45.0" />
         </route>
-        <route name="M">
-            <routestop stop="22272" />
-            <routestop stop="22014" />
-            <routestop stop="22002" />
-            <routestop stop="22004" />
-            <routestop stop="22035" />
-            <routestop stop="22295" />
-            <routestop stop="22296" />
-            <routestop stop="22318" />
-            <routestop stop="22045" />
-            <routestop stop="22038" />
-            <routestop stop="22036" />
-            <routestop stop="22034" />
-            <routestop stop="22242" />
-            <routestop stop="22003" />
-            <routestop stop="22013" />
-            <routestop stop="22021" />
-            <routestop stop="22167" />
+        <route name="M" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22272" delta="+0.0" />
+            <routestop stop="22014" delta="+2.0" />
+            <routestop stop="22002" delta="+4.0" />
+            <routestop stop="22004" delta="+5.0" />
+            <routestop stop="22035" delta="+7.0" />
+            <routestop stop="22295" delta="+8.0" />
+            <routestop stop="22296" delta="+9.0" />
+            <routestop stop="22318" delta="+10.0" />
+            <routestop stop="22045" delta="+11.0" />
+            <routestop stop="22038" delta="+12.0" />
+            <routestop stop="22036" delta="+13.0" />
+            <routestop stop="22034" delta="+14.0" />
+            <routestop stop="22242" delta="+16.0" />
+            <routestop stop="22003" delta="+17.0" />
+            <routestop stop="22013" delta="+19.0" />
+            <routestop stop="22021" delta="+20.0" />
+            <routestop stop="22167" delta="+22.0" />
         </route>
-        <route name="O">
-            <routestop stop="22272" />
-            <routestop stop="22014" />
-            <routestop stop="22005" />
-            <routestop stop="22007" />
-            <routestop stop="22011" />
-            <routestop stop="22031" />
-            <routestop stop="22033" />
-            <routestop stop="22076" />
-            <routestop stop="22075" />
-            <routestop stop="22073" />
-            <routestop stop="22234" />
-            <routestop stop="22237" />
-            <routestop stop="22070" />
-            <routestop stop="22300" />
-            <routestop stop="22067" />
-            <routestop stop="22235" />
-            <routestop stop="22066" />
-            <routestop stop="22243" />
-            <routestop stop="22282" />
-            <routestop stop="22326" />
-            <routestop stop="22283" />
-            <routestop stop="22071" />
-            <routestop stop="22072" />
-            <routestop stop="22074" />
-            <routestop stop="22281" />
-            <routestop stop="22103" />
-            <routestop stop="22325" />
-            <routestop stop="22032" />
-            <routestop stop="22030" />
-            <routestop stop="22012" />
-            <routestop stop="22009" />
-            <routestop stop="22013" />
-            <routestop stop="22021" />
-            <routestop stop="22167" />
+        <route name="O" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22272" delta="+0.0" />
+            <routestop stop="22014" delta="+2.0" />
+            <routestop stop="22005" delta="+3.0" />
+            <routestop stop="22007" delta="+4.0" />
+            <routestop stop="22011" delta="+5.0" />
+            <routestop stop="22031" delta="+6.0" />
+            <routestop stop="22033" delta="+7.0" />
+            <routestop stop="22076" delta="+9.0" />
+            <routestop stop="22075" delta="+10.0" />
+            <routestop stop="22073" delta="+12.0" />
+            <routestop stop="22234" delta="+13.0" />
+            <routestop stop="22237" delta="+14.0" />
+            <routestop stop="22070" delta="+15.0" />
+            <routestop stop="22300" delta="+16.0" />
+            <routestop stop="22067" delta="+17.0" />
+            <routestop stop="22235" delta="+18.0" />
+            <routestop stop="22066" delta="+19.0" />
+            <routestop stop="22243" delta="+20.0" />
+            <routestop stop="22282" delta="+22.0" />
+            <routestop stop="22326" delta="+25.0" />
+            <routestop stop="22283" delta="+27.0" />
+            <routestop stop="22071" delta="+28.0" />
+            <routestop stop="22072" delta="+29.0" />
+            <routestop stop="22074" delta="+30.0" />
+            <routestop stop="22281" delta="+32.0" />
+            <routestop stop="22103" delta="+33.0" />
+            <routestop stop="22325" delta="+35.0" />
+            <routestop stop="22032" delta="+36.0" />
+            <routestop stop="22030" delta="+37.0" />
+            <routestop stop="22012" delta="+38.0" />
+            <routestop stop="22009" delta="+39.0" />
+            <routestop stop="22013" delta="+41.0" />
+            <routestop stop="22021" delta="+42.0" />
+            <routestop stop="22167" delta="+44.0" />
         </route>
-        <route name="P">
-            <routestop stop="22272" />
-            <routestop stop="22025" />
-            <routestop stop="22028" />
-            <routestop stop="22319" />
-            <routestop stop="22076" />
-            <routestop stop="22039" />
-            <routestop stop="22297" />
-            <routestop stop="22174" />
-            <routestop stop="22254" />
-            <routestop stop="22255" />
-            <routestop stop="22048" />
-            <routestop stop="22051" />
-            <routestop stop="22054" />
-            <routestop stop="22056" />
-            <routestop stop="22057" />
-            <routestop stop="22060" />
-            <routestop stop="22244" />
-            <routestop stop="22363" />
-            <routestop stop="22362" />
-            <routestop stop="22097" />
-            <routestop stop="22113" />
-            <routestop stop="22114" />
-            <routestop stop="22123" />
-            <routestop stop="22125" />
-            <routestop stop="22147" />
-            <routestop stop="22149" />
-            <routestop stop="22153" />
-            <routestop stop="22154" />
-            <routestop stop="22196" />
-            <routestop stop="22199" />
-            <routestop stop="22200" />
-            <routestop stop="22203" />
-            <routestop stop="22205" />
-            <routestop stop="22208" />
-            <routestop stop="22210" />
-            <routestop stop="22211" />
-            <routestop stop="22223" />
-            <routestop stop="22224" />
-            <routestop stop="22316" />
-            <routestop stop="22177" />
-            <routestop stop="22167" />
+        <route name="P" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22272" delta="+0.0" />
+            <routestop stop="22025" delta="+2.0" />
+            <routestop stop="22028" delta="+3.0" />
+            <routestop stop="22319" delta="+4.0" />
+            <routestop stop="22076" delta="+6.0" />
+            <routestop stop="22039" delta="+8.0" />
+            <routestop stop="22297" delta="+9.0" />
+            <routestop stop="22174" delta="+10.0" />
+            <routestop stop="22254" delta="+11.0" />
+            <routestop stop="22255" delta="+12.0" />
+            <routestop stop="22048" delta="+13.0" />
+            <routestop stop="22051" delta="+15.0" />
+            <routestop stop="22054" delta="+16.0" />
+            <routestop stop="22056" delta="+17.0" />
+            <routestop stop="22057" delta="+18.0" />
+            <routestop stop="22060" delta="+19.0" />
+            <routestop stop="22244" delta="+21.0" />
+            <routestop stop="22363" delta="+26.0" />
+            <routestop stop="22362" delta="+28.0" />
+            <routestop stop="22097" delta="+30.0" />
+            <routestop stop="22113" delta="+32.0" />
+            <routestop stop="22114" delta="+33.0" />
+            <routestop stop="22123" delta="+34.0" />
+            <routestop stop="22125" delta="+35.0" />
+            <routestop stop="22147" delta="+36.0" />
+            <routestop stop="22149" delta="+37.0" />
+            <routestop stop="22153" delta="+38.0" />
+            <routestop stop="22154" delta="+39.0" />
+            <routestop stop="22196" delta="+41.0" />
+            <routestop stop="22199" delta="+42.0" />
+            <routestop stop="22200" delta="+43.0" />
+            <routestop stop="22203" delta="+45.0" />
+            <routestop stop="22205" delta="+46.0" />
+            <routestop stop="22208" delta="+47.0" />
+            <routestop stop="22210" delta="+48.0" />
+            <routestop stop="22211" delta="+49.0" />
+            <routestop stop="22223" delta="+50.0" />
+            <routestop stop="22224" delta="+51.0" />
+            <routestop stop="22316" delta="+53.0" />
+            <routestop stop="22177" delta="+55.0" />
+            <routestop stop="22167" delta="+57.0" />
         </route>
-        <route name="Q">
-            <routestop stop="22272" />
-            <routestop stop="22178" />
-            <routestop stop="22225" />
-            <routestop stop="22494" />
-            <routestop stop="22495" />
-            <routestop stop="22212" />
-            <routestop stop="22209" />
-            <routestop stop="22207" />
-            <routestop stop="22206" />
-            <routestop stop="22204" />
-            <routestop stop="22202" />
-            <routestop stop="22201" />
-            <routestop stop="22198" />
-            <routestop stop="22197" />
-            <routestop stop="22155" />
-            <routestop stop="22150" />
-            <routestop stop="22146" />
-            <routestop stop="22124" />
-            <routestop stop="22115" />
-            <routestop stop="22112" />
-            <routestop stop="22098" />
-            <routestop stop="22096" />
-            <routestop stop="22364" />
-            <routestop stop="22079" />
-            <routestop stop="22245" />
-            <routestop stop="22243" />
-            <routestop stop="22059" />
-            <routestop stop="22058" />
-            <routestop stop="22055" />
-            <routestop stop="22053" />
-            <routestop stop="22052" />
-            <routestop stop="22047" />
-            <routestop stop="22046" />
-            <routestop stop="22043" />
-            <routestop stop="22042" />
-            <routestop stop="22040" />
-            <routestop stop="22077" />
-            <routestop stop="22078" />
-            <routestop stop="22317" />
-            <routestop stop="22029" />
-            <routestop stop="22026" />
-            <routestop stop="22021" />
-            <routestop stop="22167" />
+        <route name="Q" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22272" delta="+0.0" />
+            <routestop stop="22178" delta="+3.0" />
+            <routestop stop="22225" delta="+5.0" />
+            <routestop stop="22494" delta="+7.0" />
+            <routestop stop="22495" delta="+8.0" />
+            <routestop stop="22212" delta="+9.0" />
+            <routestop stop="22209" delta="+10.0" />
+            <routestop stop="22207" delta="+11.0" />
+            <routestop stop="22206" delta="+12.0" />
+            <routestop stop="22204" delta="+13.0" />
+            <routestop stop="22202" delta="+14.0" />
+            <routestop stop="22201" delta="+15.0" />
+            <routestop stop="22198" delta="+17.0" />
+            <routestop stop="22197" delta="+18.0" />
+            <routestop stop="22155" delta="+20.0" />
+            <routestop stop="22150" delta="+21.0" />
+            <routestop stop="22146" delta="+22.0" />
+            <routestop stop="22124" delta="+23.0" />
+            <routestop stop="22115" delta="+24.0" />
+            <routestop stop="22112" delta="+25.0" />
+            <routestop stop="22098" delta="+27.0" />
+            <routestop stop="22096" delta="+29.0" />
+            <routestop stop="22364" delta="+32.0" />
+            <routestop stop="22079" delta="+34.0" />
+            <routestop stop="22245" delta="+36.0" />
+            <routestop stop="22243" delta="+38.0" />
+            <routestop stop="22059" delta="+40.0" />
+            <routestop stop="22058" delta="+41.0" />
+            <routestop stop="22055" delta="+42.0" />
+            <routestop stop="22053" delta="+43.0" />
+            <routestop stop="22052" delta="+44.0" />
+            <routestop stop="22047" delta="+46.0" />
+            <routestop stop="22046" delta="+47.0" />
+            <routestop stop="22043" delta="+48.0" />
+            <routestop stop="22042" delta="+49.0" />
+            <routestop stop="22040" delta="+50.0" />
+            <routestop stop="22077" delta="+52.0" />
+            <routestop stop="22078" delta="+53.0" />
+            <routestop stop="22317" delta="+54.0" />
+            <routestop stop="22029" delta="+55.0" />
+            <routestop stop="22026" delta="+57.0" />
+            <routestop stop="22021" delta="+58.0" />
+            <routestop stop="22167" delta="+60.0" />
         </route>
-        <route name="V">
-            <routestop stop="22273" />
-            <routestop stop="22176" />
-            <routestop stop="22239" />
-            <routestop stop="22361" />
-            <routestop stop="22286" />
-            <routestop stop="22288" />
-            <routestop stop="22305" />
+        <route name="V" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22273" delta="+0.0" />
+            <routestop stop="22176" delta="+3.0" />
+            <routestop stop="22239" delta="+4.0" />
+            <routestop stop="22361" delta="+5.0" />
+            <routestop stop="22286" delta="+7.0" />
+            <routestop stop="22288" delta="+8.0" />
+            <routestop stop="22305" delta="+9.0" />
         </route>
-        <route name="W">
-            <routestop stop="22257" />
-            <routestop stop="22169" />
-            <routestop stop="22000" />
-            <routestop stop="22002" />
-            <routestop stop="22004" />
-            <routestop stop="22035" />
-            <routestop stop="22037" />
-            <routestop stop="22041" />
-            <routestop stop="22297" />
-            <routestop stop="22174" />
-            <routestop stop="22254" />
-            <routestop stop="22255" />
-            <routestop stop="22045" />
-            <routestop stop="22038" />
-            <routestop stop="22036" />
-            <routestop stop="22034" />
-            <routestop stop="22242" />
-            <routestop stop="22003" />
-            <routestop stop="22001" />
-            <routestop stop="22168" />
-            <routestop stop="22256" />
+        <route name="W" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22257" delta="+0.0" />
+            <routestop stop="22169" delta="+1.0" />
+            <routestop stop="22000" delta="+2.0" />
+            <routestop stop="22002" delta="+5.0" />
+            <routestop stop="22004" delta="+6.0" />
+            <routestop stop="22035" delta="+8.0" />
+            <routestop stop="22037" delta="+9.0" />
+            <routestop stop="22041" delta="+10.0" />
+            <routestop stop="22297" delta="+11.0" />
+            <routestop stop="22174" delta="+12.0" />
+            <routestop stop="22254" delta="+13.0" />
+            <routestop stop="22255" delta="+14.0" />
+            <routestop stop="22045" delta="+17.0" />
+            <routestop stop="22038" delta="+18.0" />
+            <routestop stop="22036" delta="+19.0" />
+            <routestop stop="22034" delta="+20.0" />
+            <routestop stop="22242" delta="+22.0" />
+            <routestop stop="22003" delta="+23.0" />
+            <routestop stop="22001" delta="+26.0" />
+            <routestop stop="22168" delta="+27.0" />
+            <routestop stop="22256" delta="+28.0" />
         </route>
-        <route name="X">
-            <routestop stop="22272" />
-            <routestop stop="22176" />
-            <routestop stop="22285" />
-            <routestop stop="807735" />
-            <routestop stop="807734" />
-            <routestop stop="22175" />
-            <routestop stop="22167" />
+        <route name="X" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22272" delta="+0.0" />
+            <routestop stop="22176" delta="+3.0" />
+            <routestop stop="22285" delta="+5.0" />
+            <routestop stop="807735" delta="+6.0" />
+            <routestop stop="807734" delta="+7.0" />
+            <routestop stop="22175" delta="+9.0" />
+            <routestop stop="22167" delta="+11.0" />
         </route>
-        <route name="Z">
-            <routestop stop="22274" />
-            <routestop stop="22014" />
-            <routestop stop="22005" />
-            <routestop stop="22007" />
-            <routestop stop="22011" />
-            <routestop stop="22031" />
-            <routestop stop="22033" />
-            <routestop stop="22076" />
-            <routestop stop="22075" />
-            <routestop stop="22073" />
-            <routestop stop="22234" />
-            <routestop stop="22237" />
-            <routestop stop="22070" />
-            <routestop stop="22300" />
-            <routestop stop="22067" />
-            <routestop stop="22235" />
-            <routestop stop="22066" />
-            <routestop stop="22243" />
-            <routestop stop="22282" />
-            <routestop stop="22326" />
-            <routestop stop="22283" />
-            <routestop stop="22071" />
-            <routestop stop="22072" />
-            <routestop stop="22074" />
-            <routestop stop="22077" />
-            <routestop stop="22078" />
-            <routestop stop="22032" />
-            <routestop stop="22030" />
-            <routestop stop="22012" />
-            <routestop stop="22009" />
-            <routestop stop="22013" />
-            <routestop stop="22021" />
-            <routestop stop="22167" />
+        <route name="Z" schedule="07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM">
+            <routestop stop="22274" delta="+0.0" />
+            <routestop stop="22014" delta="+2.0" />
+            <routestop stop="22005" delta="+3.0" />
+            <routestop stop="22007" delta="+4.0" />
+            <routestop stop="22011" delta="+5.0" />
+            <routestop stop="22031" delta="+6.0" />
+            <routestop stop="22033" delta="+7.0" />
+            <routestop stop="22076" delta="+9.0" />
+            <routestop stop="22075" delta="+10.0" />
+            <routestop stop="22073" delta="+12.0" />
+            <routestop stop="22234" delta="+13.0" />
+            <routestop stop="22237" delta="+14.0" />
+            <routestop stop="22070" delta="+15.0" />
+            <routestop stop="22300" delta="+16.0" />
+            <routestop stop="22067" delta="+17.0" />
+            <routestop stop="22235" delta="+18.0" />
+            <routestop stop="22066" delta="+19.0" />
+            <routestop stop="22243" delta="+20.0" />
+            <routestop stop="22282" delta="+22.0" />
+            <routestop stop="22326" delta="+25.0" />
+            <routestop stop="22283" delta="+27.0" />
+            <routestop stop="22071" delta="+28.0" />
+            <routestop stop="22072" delta="+29.0" />
+            <routestop stop="22074" delta="+30.0" />
+            <routestop stop="22077" delta="+31.0" />
+            <routestop stop="22078" delta="+32.0" />
+            <routestop stop="22032" delta="+33.0" />
+            <routestop stop="22030" delta="+34.0" />
+            <routestop stop="22012" delta="+35.0" />
+            <routestop stop="22009" delta="+36.0" />
+            <routestop stop="22013" delta="+38.0" />
+            <routestop stop="22021" delta="+39.0" />
+            <routestop stop="22167" delta="+41.0" />
         </route>
     </routes>
 </bussystem>
