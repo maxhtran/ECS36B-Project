@@ -17,7 +17,9 @@ struct CXMLBusSystem::SImplementation{
     const std::string DRouteTag = "route";
     const std::string DRouteStopTag = "routestop";
     const std::string DRouteNameAttr = "name";
+    const std::string DRouteScheduleAttr = "schedule";
     const std::string DRouteStopStopAttr = "stop";
+    const std::string DRouteStopDeltaAttr = "delta";
 
     const std::string DPathsTag = "paths";
     const std::string DPathTag = "path";
@@ -59,10 +61,12 @@ struct CXMLBusSystem::SImplementation{
 
     struct SRoute : public CBusSystem::SRoute {
         std::string DName;
-        std::vector<std::shared_ptr<SStop>> DStops;
+        std::vector<TStopTime> DSchedule;
+        std::vector<std::pair<std::shared_ptr<SStop>, int>> DStops;
 
-        SRoute(std::string name, std::vector<std::shared_ptr<SStop>> stops) {
+        SRoute(std::string name, std::vector<TStopTime> schedule, std::vector<std::pair<std::shared_ptr<SStop>, int>> stops) {
             DName = name;
+            DSchedule = schedule;
             DStops = stops;
         }
         
@@ -81,7 +85,18 @@ struct CXMLBusSystem::SImplementation{
                 return CBusSystem::InvalidStopID;
             }
 
-            return DStops[index]->ID();
+            return DStops[index].first->ID();
+        }
+
+        std::size_t TripCount() const noexcept override {
+            return DSchedule.size();
+        }
+
+        TStopTime GetStopTime(std::size_t stopindex, std::size_t tripindex) const noexcept override {
+            int schedule_time = DSchedule[tripindex].hours().count() * 60 + DSchedule[tripindex].minutes().count();
+            int delta = DStops[stopindex].second;
+
+            return std::chrono::hh_mm_ss<std::chrono::seconds>(std::chrono::minutes(schedule_time + delta));
         }
     };
 
@@ -171,24 +186,45 @@ struct CXMLBusSystem::SImplementation{
     std::vector<std::shared_ptr<SRoute>> DRoutesByIndex;
     std::unordered_map<std::string, std::shared_ptr<SRoute>> DRoutesByName;
 
-    std::vector<std::shared_ptr<SStop>> GetRouteStops(std::shared_ptr<CXMLReader> systemsource) {
-        std::vector<std::shared_ptr<SStop>> RouteStops;
+    std::vector<std::pair<std::shared_ptr<SStop>, int>> GetRouteStops(std::shared_ptr<CXMLReader> systemsource) {
+        std::vector<std::pair<std::shared_ptr<SStop>, int>> RouteStops;
         SXMLEntity TempEntity;
         
         while (systemsource->ReadEntity(TempEntity, true) && TempEntity.DNameData == DRouteStopTag) {
             std::string stopIDStr = TempEntity.AttributeValue(DRouteStopStopAttr);
-            if (!stopIDStr.empty()) {
+            std::string deltaStr = TempEntity.AttributeValue(DRouteStopDeltaAttr);
+            if (!stopIDStr.empty() && !deltaStr.empty()) {
                 TStopID RouteStopID = std::stoull(stopIDStr);
-                RouteStops.push_back(StopByID(RouteStopID));
+                int RouteStopDelta = deltaStr.length() == 4 ? std::stoi(deltaStr.substr(1, 1)) : std::stoi(deltaStr.substr(1, 2));
+                RouteStops.push_back(std::make_pair(StopByID(RouteStopID), RouteStopDelta));
             }
         }
 
         return RouteStops;
     }
 
+    std::vector<TStopTime> GetRouteSchedule(std::string schedulestring) {
+        std::vector<TStopTime> schedule;
+
+        for (int i = 0; i < (int)schedulestring.length(); i += 9) {
+            std::string hour_string = schedulestring.substr(i, 2);
+            std::string minute_string = schedulestring.substr(i + 3, 2);
+            std::string am_or_pm = schedulestring.substr(i + 6, 2);
+
+            int hour = std::stoi(hour_string);
+            if (am_or_pm == "PM" && hour != 12) { hour += 12; }
+            int minute = std::stoi(minute_string);
+
+            schedule.push_back(std::chrono::hh_mm_ss<std::chrono::seconds>(std::chrono::minutes(hour * 60 + minute)));
+        }
+
+        return schedule;
+    }
+
     void ParseRoute(std::shared_ptr< CXMLReader > systemsource, const SXMLEntity &route){
         std::string RouteName = route.AttributeValue(DRouteNameAttr);
-        auto NewRoute = std::make_shared<SRoute>(RouteName, GetRouteStops(systemsource));
+        std::string RouteSchedule = route.AttributeValue(DRouteScheduleAttr);
+        auto NewRoute = std::make_shared<SRoute>(RouteName, GetRouteSchedule(RouteSchedule), GetRouteStops(systemsource));
         DRoutesByIndex.push_back(NewRoute);
         DRoutesByName[RouteName] = NewRoute;
     }

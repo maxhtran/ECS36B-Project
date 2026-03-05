@@ -210,11 +210,11 @@ clean:
 	rm -rf $(TESTOBJ_DIR)
 	rm -rf $(TESTBIN_DIR)
 	rm -rf $(TESTCOVER_DIR)
-	rm run_osmtest
-	rm run_sinktest
-	rm run_srctest
-	rm run_svgtest
-	rm run_svgwritertest
-	rm run_tpcltest
-	rm run_xmlbstest
-	rm run_xmltest
+	rm -f run_osmtest
+	rm -f run_sinktest
+	rm -f run_srctest
+	rm -f run_svgtest
+	rm -f run_svgwritertest
+	rm -f run_tpcltest
+	rm -f run_xmlbstest
+	rm -f run_xmltest

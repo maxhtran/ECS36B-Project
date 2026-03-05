@@ -9,9 +9,9 @@ TEST(XMLBusSystemTest, SimpleTest) {
                                                                     "<stop id=\"2\" node=\"311\" description=\"second\"/>\n"
                                                                 "</stops>\n"
                                                                 "<routes>\n"
-                                                                    "<route name=\"M\">\n"
-                                                                        "<routestop stop=\"1\" />\n"
-                                                                        "<routestop stop=\"2\" />\n"
+                                                                    "<route name=\"M\" schedule=\"07:00 AM,07:30 AM,08:00 AM,08:30 AM,09:00 AM,09:30 AM,10:00 AM,10:30 AM,11:00 AM,11:30 AM,12:10 PM,12:40 PM,01:10 PM,01:40 PM,02:10 PM,02:40 PM,03:10 PM,03:40 PM,04:10 PM,04:40 PM,05:10 PM,05:40 PM,06:10 PM,06:40 PM,07:10 PM,07:40 PM,08:10 PM,08:40 PM,09:10 PM,09:40 PM,10:10 PM\">\n"
+                                                                        "<routestop stop=\"1\" delta=\"+0.0\" />\n"
+                                                                        "<routestop stop=\"2\" delta=\"+12.0\" />\n"
                                                                     "</route>\n"
                                                                 "</routes>\n"
                                                             "</bussystem>");
@@ -60,6 +60,11 @@ TEST(XMLBusSystemTest, SimpleTest) {
     EXPECT_EQ(RouteObj->GetStopID(0), 1);
     EXPECT_EQ(RouteObj->GetStopID(1), 2);
     EXPECT_EQ(RouteObj->GetStopID(2), CBusSystem::InvalidStopID);
+    EXPECT_EQ(RouteObj->TripCount(), 31);
+    EXPECT_EQ(RouteObj->GetStopTime(0, 0).to_duration(), std::chrono::minutes(7 * 60 + 0));
+    EXPECT_EQ(RouteObj->GetStopTime(1, 0).to_duration(), std::chrono::minutes(7 * 60 + 12));
+    EXPECT_EQ(RouteObj->GetStopTime(0, 1).to_duration(), std::chrono::minutes(7 * 60 + 30));
+    EXPECT_EQ(RouteObj->GetStopTime(1, 1).to_duration(), std::chrono::minutes(7 * 60 + 30 + 12));
 
     // Test paths
     auto PathObj = BusSystem.PathByStopIDs(1, 2);
