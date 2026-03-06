@@ -57,14 +57,45 @@ TEST_OSM_OBJ		= $(TESTOBJ_DIR)/OpenStreetMap.o
 TEST_OSM_TEST_OBJ	= $(TESTOBJ_DIR)/OpenStreetMapTest.o 
 TEST_OSM_OBJ_FILES	= $(TEST_OSM_OBJ) $(TEST_OSM_TEST_OBJ) $(TEST_XML_OBJ) $(TEST_STRSRC_OBJ)
 
+TEST_FILEDATASINK_OBJ		= $(TESTOBJ_DIR)/FileDataSink.o 
+TEST_FILEDATASOURCE_OBJ		= $(TESTOBJ_DIR)/FileDataSource.o 
+TEST_FILEDATAFACTORY_OBJ	= $(TESTOBJ_DIR)/FileDataFactory.o
+TEST_FILEDATASS_TEST_OBJ	= $(TESTOBJ_DIR)/FileDataSSTest.o 
+TEST_FILEDATASS_OBJ_FILES	= $(TEST_FILEDATASINK_OBJ) $(TEST_FILEDATASOURCE_OBJ) $(TEST_FILEDATAFACTORY_OBJ) $(TEST_FILEDATASS_TEST_OBJ)
+
+TEST_BSINDEXER_OBJ			= $(TESTOBJ_DIR)/BusSystemIndexer.o
+TEST_BSINDEXER_TEST_OBJ		= $(TESTOBJ_DIR)/BusSystemIndexerTest.o
+TEST_BSINDEXER_OBJ_FILES	= $(TEST_BSINDEXER_OBJ) $(TEST_BSINDEXER_TEST_OBJ)
+
+TEST_GEOUTILS_OBJ		= $(TESTOBJ_DIR)/GeographicUtils.o 
+TEST_GEOUTILS_TEST_OBJ	= $(TESTOBJ_DIR)/GeographicUtilsTest.o 
+TEST_GEOUTILS_OBJ_FILES	= $(TEST_GEOUTILS_OBJ) $(TEST_GEOUTILS_TEST_OBJ)
+
+TEST_SMINDEXER_OBJ			= $(TESTOBJ_DIR)/StreetMapIndexer.o 
+TEST_SMINDEXER_TEST_OBJ		= $(TESTOBJ_DIR)/StreetMapIndexerTest.o 
+TEST_SMINDEXER_OBJ_FILES	= $(TEST_SMINDEXER_OBJ) $(TEST_SMINDEXER_TEST_OBJ)
+
 TEST_MOCK_BS_OBJ	= $(TESTOBJ_DIR)/MockBusSystem.o 
 TEST_MOCK_SM_OBJ	= $(TESTOBJ_DIR)/MockStreetMap.o
 
-TEST_HTMLTPW_OBJ	= $(TESTOBJ_DIR)/HTMLTripPlanWriter.o 
-TEST_SVGTPW_OBJ		= $(TESTOBJ_DIR)/SVGTripPlanWriter.o 
-TEST_TEXTTPW_OBJ	= $(TESTOBJ_DIR)/TextTripPlanWriter.o 
+TEST_TP_OBJ			= $(TESTOBJ_DIR)/TripPlanner.o 
+TEST_TP_TEST_OBJ 	= $(TESTOBJ_DIR)/TripPlannerTest.o 
+TEST_TP_OBJ_FILES 	= $(TEST_TP_OBJ) $(TEST_TP_TEST_OBJ) $(TEST_MOCK_BS_OBJ)
 
-TEST_TP_OBJ		 	= $(TESTOBJ_DIR)/TripPlanner.o
+TEST_TEXTTPW_OBJ		= $(TESTOBJ_DIR)/TextTripPlanWriter.o 
+TEST_TEXTTPW_TEST_OBJ	= $(TESTOBJ_DIR)/TextTripPlanWriterTest.o 
+TEST_TEXTTPW_OBJ_FILES	= $(TEST_TEXTTPW_OBJ) $(TEST_TEXTTPW_TEST_OBJ) $(TEST_MOCK_BS_OBJ) $(TEST_STRSINK_OBJ)
+
+TEST_SVGTPW_OBJ			= $(TESTOBJ_DIR)/SVGTripPlanWriter.o 
+TEST_SVGTPW_TEST_OBJ	= $(TESTOBJ_DIR)/SVGTripPlanWriterTest.o 
+TEST_SVGTPW_OBJ_FILES	= $(TEST_SVGTPW_OBJ) $(TEST_SVGTPW_TEST_OBJ) $(TEST_STRSINK_OBJ) $(TEST_XML_OBJ) $(TEST_MOCK_SM_OBJ) \
+							$(TEST_MOCK_BS_OBJ) $(TEST_STRSRC_OBJ)
+
+TEST_HTMLTPW_OBJ		= $(TESTOBJ_DIR)/HTMLTripPlanWriter.o 
+TEST_HTMLTPW_TEST_OBJ	= $(TESTOBJ_DIR)/HTMLTripPlanWriterTest.o 
+TEST_HTMLTPW_OBJ_FILES	= $(TEST_HTMLTPW_OBJ) $(TEST_HTMLTPW_TEST_OBJ) $(TEST_STRSINK_OBJ) $(TEST_XML_OBJ) $(TEST_MOCK_SM_OBJ) \
+							$(TEST_MOCK_BS_OBJ) $(TEST_STRSRC_OBJ)
+
 TEST_TPCL_OBJ		= $(TESTOBJ_DIR)/TripPlannerCommandLine.o
 TEST_TPCL_TEST_OBJ	= $(TESTOBJ_DIR)/TripPlannerCommandLineTest.o
 TEST_TPCL_OBJ_FILES	= $(TEST_STRSRC_OBJ) \
@@ -86,6 +117,14 @@ TEST_SVGWRITER_TARGET	= $(TESTBIN_DIR)/testsvgwriter
 TEST_XML_TARGET			= $(TESTBIN_DIR)/testxml
 TEST_XMLBS_TARGET		= $(TESTBIN_DIR)/testxmlbs
 TEST_OSM_TARGET			= $(TESTBIN_DIR)/testosm
+TEST_FILEDATASS_TARGET	= $(TESTBIN_DIR)/testfiledatass
+TEST_BSINDEXER_TARGET	= $(TESTBIN_DIR)/testbussystemindexer
+TEST_GEOUTILS_TARGET	= $(TESTBIN_DIR)/testgeographicutils
+TEST_SMINDEXER_TARGET	= $(TESTBIN_DIR)/teststreetmapindexer
+TEST_TP_TARGET 			= $(TESTBIN_DIR)/testtripplanner
+TEST_TEXTTPW_TARGET		= $(TESTBIN_DIR)/testtexttripplanwriter
+TEST_SVGTPW_TARGET		= $(TESTBIN_DIR)/testsvgtripplanwriter
+TEST_HTMLTPW_TARGET		= $(TESTBIN_DIR)/testhtmltripplanwriter
 TEST_TPCL_TARGET		= $(TESTBIN_DIR)/testtpcl
 
 
@@ -99,7 +138,24 @@ EXECUTABLE 			= $(BIN_DIR)/svg
 CHECKMARK_ANSWER	= expected_checkmark.svg
 CHECKMARK_OUTPUT	= checkmark.svg
 
-all: directories run_svgtest run_srctest run_sinktest run_xmltest run_svgwritertest run_xmlbstest run_osmtest run_tpcltest gen_html
+all: directories \
+		run_svgtest \
+		run_srctest \
+		run_sinktest \
+		run_xmltest \
+		run_svgwritertest \
+		run_xmlbstest \
+		run_osmtest \
+		run_filedatasstest \
+		run_bsindexertest \
+		run_geoutilstest \
+		run_smindexertest \
+		run_tptest \
+		run_texttpwtest \
+		run_svgtpwtest \
+		run_htmltpwtest \
+		run_tpcltest \
+		gen_html
 
 run_svgtest: $(TEST_SVG_TARGET)
 	$(TEST_SVG_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
@@ -117,10 +173,6 @@ run_svgwritertest: $(TEST_SVGWRITER_TARGET)
 	$(TEST_SVGWRITER_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
 	mv $(TESTTMP_DIR)/$@ $@
 
-run_tpcltest: $(TEST_TPCL_TARGET)
-	$(TEST_TPCL_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
-	mv $(TESTTMP_DIR)/$@ $@
-
 run_xmltest: $(TEST_XML_TARGET)
 	$(TEST_XML_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
 	mv $(TESTTMP_DIR)/$@ $@
@@ -131,6 +183,42 @@ run_xmlbstest: $(TEST_XMLBS_TARGET)
 
 run_osmtest: $(TEST_OSM_TARGET)
 	$(TEST_OSM_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_filedatasstest: $(TEST_FILEDATASS_TARGET)
+	$(TEST_FILEDATASS_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_bsindexertest: $(TEST_BSINDEXER_TARGET)
+	$(TEST_BSINDEXER_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_geoutilstest: $(TEST_GEOUTILS_TARGET)
+	$(TEST_GEOUTILS_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_smindexertest: $(TEST_SMINDEXER_TARGET)
+	$(TEST_SMINDEXER_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_tptest: $(TEST_TP_TARGET)
+	$(TEST_TP_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_texttpwtest: $(TEST_TEXTTPW_TARGET)
+	$(TEST_TEXTTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_svgtpwtest: $(TEST_SVGTPW_TARGET)
+	$(TEST_SVGTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_htmltpwtest: $(TEST_HTMLTPW_TARGET)
+	$(TEST_HTMLTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	mv $(TESTTMP_DIR)/$@ $@
+
+run_tpcltest: $(TEST_TPCL_TARGET)
+	$(TEST_TPCL_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
 	mv $(TESTTMP_DIR)/$@ $@
 	
 gen_html:
@@ -156,11 +244,35 @@ $(TEST_XML_TARGET): $(TEST_XML_OBJ_FILES) $(TEST_STRSRC_OBJ)
 $(TEST_XMLBS_TARGET): $(TEST_XMLBS_OBJ_FILES)
 	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_XMLBS_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_XMLBS_TARGET)
 
-$(TEST_TPCL_TARGET): $(TEST_TPCL_OBJ_FILES)
-	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_TPCL_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_TPCL_TARGET)
-
 $(TEST_OSM_TARGET): $(TEST_OSM_OBJ_FILES)
 	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_OSM_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_OSM_TARGET)
+
+$(TEST_FILEDATASS_TARGET): $(TEST_FILEDATASS_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_FILEDATASS_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_FILEDATASS_TARGET)
+
+$(TEST_BSINDEXER_TARGET): $(TEST_BSINDEXER_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_BSINDEXER_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_BSINDEXER_TARGET)
+
+$(TEST_GEOUTILS_TARGET): $(TEST_GEOUTILS_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_GEOUTILS_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_GEOUTILS_TARGET)
+
+$(TEST_SMINDEXER_TARGET): $(TEST_SMINDEXER_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_SMINDEXER_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_SMINDEXER_TARGET)
+
+$(TEST_TP_TARGET): $(TEST_TP_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_TP_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_TP_TARGET)
+
+$(TEST_TEXTTPW_TARGET): $(TEST_TEXTTPW_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_TEXTTPW_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_TEXTTPW_TARGET)
+
+$(TEST_SVGTPW_TARGET): $(TEST_SVGTPW_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_SVGTPW_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_SVGTPW_TARGET)
+
+$(TEST_HTMLTPW_TARGET): $(TEST_HTMLTPW_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_HTMLTPW_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_HTMLTPW_TARGET)
+
+$(TEST_TPCL_TARGET): $(TEST_TPCL_OBJ_FILES)
+	$(CXX) $(TEST_CFLAGS) $(TEST_CPPFLAGS) $(TEST_TPCL_OBJ_FILES) $(TEST_LDFLAGS) -o $(TEST_TPCL_TARGET)
 	
 $(TEST_SVG_OBJ): $(SRC_DIR)/svg.c
 	$(CC) $(TEST_CFLAGS) $(DEFINES) $(INCLUDE) -c $(SRC_DIR)/svg.c -o $(TEST_SVG_OBJ)
@@ -215,6 +327,14 @@ clean:
 	rm -f run_srctest
 	rm -f run_svgtest
 	rm -f run_svgwritertest
-	rm -f run_tpcltest
 	rm -f run_xmlbstest
 	rm -f run_xmltest
+	rm -f run_filedatasstest
+	rm -f run_bsindexertest
+	rm -f run_geoutilstest
+	rm -f run_smindexertest
+	rm -f run_tptest
+	rm -f run_texttpwtest
+	rm -f run_svgtpwtest
+	rm -f run_htmltpwtest
+	rm -f run_tpcltest

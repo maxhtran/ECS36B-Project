@@ -64,7 +64,7 @@ struct CSVGWriter::SImplementation{
         
     }
 
-    bool Rectange(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style){ // Draw SVG rectangle
+    bool Rectangle(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style){ // Draw SVG rectangle
         svg_point_t Point = {topleft.DX, topleft.DY};
         svg_size_t Size = {size.DWidth, size.DHeight};
         std::string Style = CreateStyleString(style);
@@ -125,8 +125,8 @@ bool CSVGWriter::Circle(const SSVGPoint &center, TSVGReal radius, const TAttribu
     return DImplementation->Circle(center, radius,style);
 }
 
-bool CSVGWriter::Rectange(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style){
-    return DImplementation->Rectange(topleft, size, style);
+bool CSVGWriter::Rectangle(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style){
+    return DImplementation->Rectangle(topleft, size, style);
 }
 
 bool CSVGWriter::Line(const SSVGPoint &start, const SSVGPoint &end, const TAttributes &style){

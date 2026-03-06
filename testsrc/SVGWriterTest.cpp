@@ -40,7 +40,7 @@ TEST(SVGWriterTest, RectangleTest){  // Verifies rectangle element is written co
         TAttribute attr3 = {"stroke-width", "2"};
         TAttributes style = {attr1, attr2, attr3};
         CSVGWriter Writer(Sink, 100, 50);
-        EXPECT_TRUE(Writer.Rectange(point, size, style));
+        EXPECT_TRUE(Writer.Rectangle(point, size, style));
     }
     EXPECT_EQ(Sink->String(),"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                             "<svg width=\"100\" height=\"50\" xmlns=\"http://www.w3.org/2000/svg\">\n"
@@ -152,7 +152,7 @@ TEST(SVGWriterTest, ErrorTests){ // Verifies failure handling for I/O errors, in
         Sink->DValidCalls = 65536;
         CSVGWriter Writer(Sink, 100, 50);
         Sink->DValidCalls = 0;
-        EXPECT_FALSE(Writer.Rectange(point1, size, TAttributes{}));
+        EXPECT_FALSE(Writer.Rectangle(point1, size, TAttributes{}));
     }
     {
         std::shared_ptr<CFailingSink> Sink = std::make_shared<CFailingSink>();
@@ -184,10 +184,10 @@ TEST(SVGWriterTest, ErrorTests){ // Verifies failure handling for I/O errors, in
         EXPECT_FALSE(Writer.Circle(center, 0.0, TAttributes{}));
         EXPECT_FALSE(Writer.Circle(center, -1.0, TAttributes{}));
 
-        EXPECT_FALSE(Writer.Rectange(point1, SSVGSize{0, 2}, TAttributes{}));
-        EXPECT_FALSE(Writer.Rectange(point1, SSVGSize{1, 0}, TAttributes{}));
-        EXPECT_FALSE(Writer.Rectange(point1, SSVGSize{-1, 2}, TAttributes{}));
-        EXPECT_FALSE(Writer.Rectange(point1, SSVGSize{1, -2}, TAttributes{}));
+        EXPECT_FALSE(Writer.Rectangle(point1, SSVGSize{0, 2}, TAttributes{}));
+        EXPECT_FALSE(Writer.Rectangle(point1, SSVGSize{1, 0}, TAttributes{}));
+        EXPECT_FALSE(Writer.Rectangle(point1, SSVGSize{-1, 2}, TAttributes{}));
+        EXPECT_FALSE(Writer.Rectangle(point1, SSVGSize{1, -2}, TAttributes{}));
 
         EXPECT_FALSE(Writer.SimplePath({}, TAttributes{}));
         EXPECT_FALSE(Writer.SimplePath({point1}, TAttributes{}));

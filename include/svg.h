@@ -218,6 +218,23 @@ svg_return_t svg_group_begin(svg_context_ptr context,
  */
 svg_return_t svg_group_end(svg_context_ptr context);
 
+/**
+ * @brief Draws text on SVG.
+ *
+ * Writes an SVG <text> element at the position.
+ *
+ * @param context   SVG context to draw into
+ * @param position  Location of the text
+ * @param text      Text to be output
+ * @param style     SVG style string (may be NULL)
+ *
+ * @return Status code indicating success or failure
+ */
+svg_return_t svg_text(svg_context_ptr context,
+                      const svg_point_t *position,
+                      const char *text,
+                      const char *style);
+
 #ifdef __cplusplus
 }
 #endif
