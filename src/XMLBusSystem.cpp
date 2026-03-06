@@ -62,9 +62,9 @@ struct CXMLBusSystem::SImplementation{
     struct SRoute : public CBusSystem::SRoute {
         std::string DName;
         std::vector<TStopTime> DSchedule;
-        std::vector<std::pair<std::shared_ptr<SStop>, int>> DStops;
+        std::vector<std::pair<std::shared_ptr<SStop>, double>> DStops;
 
-        SRoute(std::string name, std::vector<TStopTime> schedule, std::vector<std::pair<std::shared_ptr<SStop>, int>> stops) {
+        SRoute(std::string name, std::vector<TStopTime> schedule, std::vector<std::pair<std::shared_ptr<SStop>, double>> stops) {
             DName = name;
             DSchedule = schedule;
             DStops = stops;
@@ -186,8 +186,8 @@ struct CXMLBusSystem::SImplementation{
     std::vector<std::shared_ptr<SRoute>> DRoutesByIndex;
     std::unordered_map<std::string, std::shared_ptr<SRoute>> DRoutesByName;
 
-    std::vector<std::pair<std::shared_ptr<SStop>, int>> GetRouteStops(std::shared_ptr<CXMLReader> systemsource) {
-        std::vector<std::pair<std::shared_ptr<SStop>, int>> RouteStops;
+    std::vector<std::pair<std::shared_ptr<SStop>, double>> GetRouteStops(std::shared_ptr<CXMLReader> systemsource) {
+        std::vector<std::pair<std::shared_ptr<SStop>, double>> RouteStops;
         SXMLEntity TempEntity;
         
         while (systemsource->ReadEntity(TempEntity, true) && TempEntity.DNameData == DRouteStopTag) {
@@ -195,7 +195,7 @@ struct CXMLBusSystem::SImplementation{
             std::string deltaStr = TempEntity.AttributeValue(DRouteStopDeltaAttr);
             if (!stopIDStr.empty() && !deltaStr.empty()) {
                 TStopID RouteStopID = std::stoull(stopIDStr);
-                int RouteStopDelta = deltaStr.length() == 4 ? std::stoi(deltaStr.substr(1, 1)) : std::stoi(deltaStr.substr(1, 2));
+                double RouteStopDelta = deltaStr.length() == 4 ? std::stod(deltaStr.substr(1, 3)) : std::stod(deltaStr.substr(1, 4));
                 RouteStops.push_back(std::make_pair(StopByID(RouteStopID), RouteStopDelta));
             }
         }
