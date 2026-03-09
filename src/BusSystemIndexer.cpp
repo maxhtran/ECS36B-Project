@@ -33,11 +33,23 @@ struct CBusSystemIndexer::SImplementation{
         }
         
         size_t FindStopIndex(TStopID stopid, size_t start) const override{
-
+            for (int index = start; index < static_cast<int>(StopCount()); index++) {
+                if (GetStopID(index) == stopid) {
+                    return index;
+                }
+            }
+            
+            return std::numeric_limits<size_t>::max();
         }
 
         std::vector< TStopID > StopIDsSourceDestination(TStopID src, TStopID dest) const override{
+            std::vector<TStopID> stops_to_return;
 
+            for (int index = FindStopIndex(src, 0) + 1; GetStopID(index) != dest; index++) {
+                stops_to_return.push_back(GetStopID(index));
+            }
+
+            return stops_to_return;
         }
     };
 
@@ -148,7 +160,25 @@ struct CBusSystemIndexer::SImplementation{
     }
 
     bool StopIDsByRoutes(const std::string &route1, const std::string &route2, std::unordered_set< TStopID > &stops) const noexcept{
-        return true;
+        auto Route1 = DRoutesByName.find(route1);
+        auto Route2 = DRoutesByName.find(route2);
+
+        if (Route1 != DRoutesByName.end() && Route2 != DRoutesByName.end()) {
+            auto Route1Indexer = Route1->second;
+            auto Route2Indexer = Route2->second;
+
+            for (int i = 0; i < static_cast<int>(Route1Indexer->StopCount()); i++) {
+                for (int j = 0; j < static_cast<int>(Route2Indexer->StopCount()); j++) {
+                    if (Route1Indexer->GetStopID(i) == Route2Indexer->GetStopID(j)) {
+                        stops.insert(Route2Indexer->GetStopID(j));
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
 };

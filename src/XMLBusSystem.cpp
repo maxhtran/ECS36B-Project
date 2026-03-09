@@ -206,7 +206,7 @@ struct CXMLBusSystem::SImplementation{
     std::vector<TStopTime> GetRouteSchedule(std::string schedulestring) {
         std::vector<TStopTime> schedule;
 
-        for (int i = 0; i < (int)schedulestring.length(); i += 9) {
+        for (int i = 0; i < static_cast<int>(schedulestring.length()); i += 9) {
             std::string hour_string = schedulestring.substr(i, 2);
             std::string minute_string = schedulestring.substr(i + 3, 2);
             std::string am_or_pm = schedulestring.substr(i + 6, 2);
