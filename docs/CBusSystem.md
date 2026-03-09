@@ -11,6 +11,7 @@ the signatures of the necessary functions and a convenient alias for the stop ID
 class CBusSystem {
     public:
         using TStopID = uint64_t;
+        using TStopTime = std::chrono::hh_mm_ss<std::chrono::seconds>;
 
         inline static constexpr TStopID InvalidStopID = std::numeric_limits<TStopID>::max();
 
@@ -26,7 +27,9 @@ class CBusSystem {
             virtual ~SRoute(){};
             virtual std::string Name() const noexcept = 0;
             virtual std::size_t StopCount() const noexcept = 0;
+            virtual std::size_t TripCount() const noexcept = 0;
             virtual TStopID GetStopID(std::size_t index) const noexcept = 0;
+            virtual TStopTime GetStopTime(std::size_t stopindex, std::size_t tripindex) const noexcept = 0;
         };
 
         struct SPath{
@@ -50,8 +53,9 @@ class CBusSystem {
 ```
 
 ## Details
-- `using TStopID = uint64_t;` alias for stop IDs
-- `inline static constexpr TStopID InvalidStopID = std::numeric_limits<TStopID>::max();` defines value for invalid stop IDs
+- `using TStopID = uint64_t;`: alias for stop IDs
+- `using TStopTime = std::chrono::hh_mm_ss<std::chrono::seconds>;`: alias for stop times
+- `inline static constexpr TStopID InvalidStopID = std::numeric_limits<TStopID>::max();`: defines value for invalid stop IDs
 - `struct SStop{};`: struct abstract interface for stops
     - `virtual ~SStop(){};`: destructor for SStop (included for good practice)
     - `virtual TStopID ID() const noexcept = 0;`: returns the stop ID of the stop
@@ -62,15 +66,19 @@ class CBusSystem {
 - `struct SRoute{};`: struct abstract interface for routes
     - `virtual ~SRoute(){};`: destructor for SRoute (included for good practice)
     - `virtual std::string Name() const noexcept = 0;`: returns the name of the route
-    - `virtual std::size_t StopCount() const noexcept = 0;` returns the number of stops on the route
-    - `virtual TStopID GetStopID(std::size_t index) const noexcept = 0;` returns the stop ID specified by the index, or InvalidStopID if index is greater than or equal to StopCount()
+    - `virtual std::size_t StopCount() const noexcept = 0;`: returns the number of stops on the route
+    - `virtual std::size_t TripCount() const noexcept = 0;`: returns the number of trips that the route makes in a day
+    - `virtual TStopID GetStopID(std::size_t index) const noexcept = 0;`: returns the stop ID specified by the index, or InvalidStopID if index is greater than or equal to StopCount()
         - index: index of stop to look for
+    - `virtual TStopTime GetStopTime(std::size_t stopindex, std::size_t tripindex) const noexcept = 0;`: returns the stop time for the stop and trip indices specified
+        - stopindex: index of stop to look for
+        - tripindex: index of trip to look for
 - `struct SPath{};`: struct abstract interface for paths
-    - `virtual ~SPath(){};` destructor for SPath (included for good practice)
+    - `virtual ~SPath(){};`: destructor for SPath (included for good practice)
     - `virtual CStreetMap::TNodeID StartNodeID() const noexcept = 0;`: returns the start node ID of the path
     - `virtual CStreetMap::TNodeID EndNodeID() const noexcept = 0;`: returns the end node ID of the path
-    - `virtual std::size_t NodeCount() const noexcept = 0;` returns the node count in the path
-    - `virtual CStreetMap::TNodeID GetNodeID(std::size_t index) const noexcept = 0;` returns the node specified by the index, or InvalidNodeID if index is out of range
+    - `virtual std::size_t NodeCount() const noexcept = 0;`: returns the node count in the path
+    - `virtual CStreetMap::TNodeID GetNodeID(std::size_t index) const noexcept = 0;`: returns the node specified by the index, or InvalidNodeID if index is out of range
         - index: index of node to look for
 - `virtual ~CBusSystem(){};`: destructor for CBusSystem (included for good practice)
 - `virtual std::size_t StopCount() const noexcept = 0;`: returns the number of stops in the system

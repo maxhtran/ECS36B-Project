@@ -42,9 +42,10 @@ class CSVGWriter{
         ~CSVGWriter();
         
         bool Circle(const SSVGPoint &center, TSVGReal radius, const TAttributes &style);
-        bool Rectange(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style);
+        bool Rectangle(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style);
         bool Line(const SSVGPoint &start, const SSVGPoint &end, const TAttributes &style);
         bool SimplePath(const std::vector<SSVGPoint> points, const TAttributes &style);
+        bool Text(const SSVGPoint &anchor, const std::string &text, const TAttributes &style);
         bool GroupBegin(const TAttributes &attrs);
         bool GroupEnd();
 
@@ -64,7 +65,7 @@ class CSVGWriter{
     - &center: pointer to coordinates of the circle's center
     - radius: length of the circle's radius
     - &style: pointer to the circle's specified attributes
-- `bool Rectange(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style);`: creates an SVG rectangle
+- `bool Rectangle(const SSVGPoint &topleft, const SSVGSize &size, const TAttributes &style);`: creates an SVG rectangle
     - returns true on success, false on failure
     - &center: pointer to coordinates of the rectangle's top left corner
     - &size: pointer to the rectangle's dimensions
@@ -78,6 +79,11 @@ class CSVGWriter{
     - returns true on success, false on failure
     - points: vector of coordinates of the lines' points
     - &style: pointer to the line's specified attributes
+- `bool Text(const SSVGPoint &anchor, const std::string &text, const TAttributes &style);`: calls the svg_text function from the SVG library
+    - returns true on success, false on failure
+    - &anchor: pointer to the text's location
+    - &text: pointer to the text
+    - &style: pointer to the text's specified attributes
 - `bool GroupBegin(const TAttributes &attrs);`: creates an SVG group
     - returns true on success, false on failure
     - &attrs: pointer the the group's specified attributes

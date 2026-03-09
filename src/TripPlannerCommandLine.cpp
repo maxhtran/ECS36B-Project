@@ -11,6 +11,7 @@ struct CTripPlannerCommandLine::SImplementation{
     std::shared_ptr<CTripPlanWriter> DStorageWriter;
     inline static constexpr std::string_view DExitCommand = "exit";
     inline static constexpr std::string_view DHelpCommand = "help";
+    inline static constexpr std::string_view DCountCommand = "count";
 
     SImplementation(std::shared_ptr<SConfig> config){
         DCommandSource = config->DCommandSource;
@@ -94,6 +95,9 @@ struct CTripPlannerCommandLine::SImplementation{
                                     "arriveby Syntax \"arriveby time start end\" \n"
                                     "         Calculates the best trip plan from start to end arriving by time.\n"
                                     "save     Saves the last calculated trip to file\n");
+                }
+                else if (Arguments[0] == DCountCommand) {
+                    OutputString(std::to_string(DTripPlanner->BusSystemIndexer()->StopCount()) + "stops\n");
                 }
             }
         }

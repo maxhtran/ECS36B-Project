@@ -57,6 +57,9 @@ TEST_OSM_OBJ		= $(TESTOBJ_DIR)/OpenStreetMap.o
 TEST_OSM_TEST_OBJ	= $(TESTOBJ_DIR)/OpenStreetMapTest.o 
 TEST_OSM_OBJ_FILES	= $(TEST_OSM_OBJ) $(TEST_OSM_TEST_OBJ) $(TEST_XML_OBJ) $(TEST_STRSRC_OBJ)
 
+TEST_MOCK_BS_OBJ	= $(TESTOBJ_DIR)/MockBusSystem.o 
+TEST_MOCK_SM_OBJ	= $(TESTOBJ_DIR)/MockStreetMap.o
+
 TEST_FILEDATASINK_OBJ		= $(TESTOBJ_DIR)/FileDataSink.o 
 TEST_FILEDATASOURCE_OBJ		= $(TESTOBJ_DIR)/FileDataSource.o 
 TEST_FILEDATAFACTORY_OBJ	= $(TESTOBJ_DIR)/FileDataFactory.o
@@ -65,7 +68,7 @@ TEST_FILEDATASS_OBJ_FILES	= $(TEST_FILEDATASINK_OBJ) $(TEST_FILEDATASOURCE_OBJ) 
 
 TEST_BSINDEXER_OBJ			= $(TESTOBJ_DIR)/BusSystemIndexer.o
 TEST_BSINDEXER_TEST_OBJ		= $(TESTOBJ_DIR)/BusSystemIndexerTest.o
-TEST_BSINDEXER_OBJ_FILES	= $(TEST_BSINDEXER_OBJ) $(TEST_BSINDEXER_TEST_OBJ)
+TEST_BSINDEXER_OBJ_FILES	= $(TEST_BSINDEXER_OBJ) $(TEST_BSINDEXER_TEST_OBJ) $(TEST_MOCK_BS_OBJ) $(TEST_STRSRC_OBJ)
 
 TEST_GEOUTILS_OBJ		= $(TESTOBJ_DIR)/GeographicUtils.o 
 TEST_GEOUTILS_TEST_OBJ	= $(TESTOBJ_DIR)/GeographicUtilsTest.o 
@@ -73,10 +76,7 @@ TEST_GEOUTILS_OBJ_FILES	= $(TEST_GEOUTILS_OBJ) $(TEST_GEOUTILS_TEST_OBJ)
 
 TEST_SMINDEXER_OBJ			= $(TESTOBJ_DIR)/StreetMapIndexer.o 
 TEST_SMINDEXER_TEST_OBJ		= $(TESTOBJ_DIR)/StreetMapIndexerTest.o 
-TEST_SMINDEXER_OBJ_FILES	= $(TEST_SMINDEXER_OBJ) $(TEST_SMINDEXER_TEST_OBJ)
-
-TEST_MOCK_BS_OBJ	= $(TESTOBJ_DIR)/MockBusSystem.o 
-TEST_MOCK_SM_OBJ	= $(TESTOBJ_DIR)/MockStreetMap.o
+TEST_SMINDEXER_OBJ_FILES	= $(TEST_SMINDEXER_OBJ) $(TEST_SMINDEXER_TEST_OBJ) $(TEST_MOCK_SM_OBJ)
 
 TEST_TP_OBJ			= $(TESTOBJ_DIR)/TripPlanner.o 
 TEST_TP_TEST_OBJ 	= $(TESTOBJ_DIR)/TripPlannerTest.o 
@@ -102,6 +102,7 @@ TEST_TPCL_OBJ_FILES	= $(TEST_STRSRC_OBJ) \
 						$(TEST_STRSINK_OBJ) \
 						$(TEST_MOCK_BS_OBJ) \
 						$(TEST_MOCK_SM_OBJ) \
+						$(TEST_BSINDEXER_OBJ) \
 						$(TEST_HTMLTPW_OBJ) \
 						$(TEST_SVGTPW_OBJ) \
 						$(TEST_TEXTTPW_OBJ) \
@@ -322,19 +323,4 @@ clean:
 	rm -rf $(TESTOBJ_DIR)
 	rm -rf $(TESTBIN_DIR)
 	rm -rf $(TESTCOVER_DIR)
-	rm -f run_osmtest
-	rm -f run_sinktest
-	rm -f run_srctest
-	rm -f run_svgtest
-	rm -f run_svgwritertest
-	rm -f run_xmlbstest
-	rm -f run_xmltest
-	rm -f run_filedatasstest
-	rm -f run_bsindexertest
-	rm -f run_geoutilstest
-	rm -f run_smindexertest
-	rm -f run_tptest
-	rm -f run_texttpwtest
-	rm -f run_svgtpwtest
-	rm -f run_htmltpwtest
-	rm -f run_tpcltest
+	rm -f run_*
