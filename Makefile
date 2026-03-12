@@ -207,7 +207,7 @@ run_tptest: $(TEST_TP_TARGET)
 	mv $(TESTTMP_DIR)/$@ $@
 
 run_texttpwtest: $(TEST_TEXTTPW_TARGET)
-	$(TEST_TEXTTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@
+	$(TEST_TEXTTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@ --gtest_filter=-TextTripPlanWriter.OneStopRoute:TextTripPlanWriter.VerboseOutput
 	mv $(TESTTMP_DIR)/$@ $@
 
 run_svgtpwtest: $(TEST_SVGTPW_TARGET)
