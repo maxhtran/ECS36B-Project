@@ -8,6 +8,9 @@
 #include <utility>
 #include <limits>
 #include <unordered_set>
+#include <unordered_map>
+#include <vector>
+#include <algorithm>
 
 class CStreetMapIndexer{
     private:

@@ -54,5 +54,26 @@ TEST_F(StreepMapIndexer, SimpleTest){
         EXPECT_TRUE(WayIDs.contains(WayID));
     }
 
+    for(size_t NodeIndex = 0; NodeIndex < DStreetMap->NodeCount(); NodeIndex++){
+        auto Node = DStreetMap->NodeByIndex(NodeIndex);
+        std::unordered_set<CStreetMap::TWayID> ExpectedWayIDs;
+        std::unordered_set<CStreetMap::TWayID> ActualWayIDs;
+
+        for(size_t WayIndex = 0; WayIndex < DStreetMap->WayCount(); WayIndex++){
+            auto Way = DStreetMap->WayByIndex(WayIndex);
+            for(size_t WayNodeIndex = 0; WayNodeIndex < Way->NodeCount(); WayNodeIndex++){
+                if(Way->GetNodeID(WayNodeIndex) == Node->ID()){
+                    ExpectedWayIDs.insert(Way->ID());
+                }
+            }
+        }
+
+        auto WaysByNode = Indexer.WaysByNodeID(Node->ID());
+        for(auto Way : WaysByNode){
+            ActualWayIDs.insert(Way->ID());
+        }
+
+        EXPECT_EQ(ExpectedWayIDs, ActualWayIDs);
+    }
 }
 
