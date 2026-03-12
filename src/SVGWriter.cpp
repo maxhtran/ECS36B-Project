@@ -111,6 +111,12 @@ struct CSVGWriter::SImplementation{
         return false;
     }
 
+    bool Text(const SSVGPoint &anchor, const std::string &text, const TAttributes &style) {
+        svg_point_t point = {anchor.DX, anchor.DY};
+        std::string Style = CreateStyleString(style);
+        return svg_text(DContext, &point, text.c_str(), Style.c_str()) == SVG_OK;
+    }
+
 };
 
 CSVGWriter::CSVGWriter(std::shared_ptr< CDataSink > sink, TSVGPixel width, TSVGPixel height){
@@ -143,4 +149,8 @@ bool CSVGWriter::GroupBegin(const TAttributes &attrs){
 
 bool CSVGWriter::GroupEnd(){
     return DImplementation->GroupEnd();
+}
+
+bool CSVGWriter::Text(const SSVGPoint &anchor, const std::string &text, const TAttributes &style) {
+    return DImplementation->Text(anchor, text, style);
 }

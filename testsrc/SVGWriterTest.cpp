@@ -195,3 +195,20 @@ TEST(SVGWriterTest, ErrorTests){ // Verifies failure handling for I/O errors, in
         EXPECT_FALSE(Writer.GroupEnd());
     }
 }
+
+TEST(SVGWriterTest, TextTest){ // Verifies text element is written correctly
+    std::shared_ptr<CStringDataSink> Sink = std::make_shared<CStringDataSink>();
+    {
+        SSVGPoint anchor = {10,20};
+        TAttribute attr1 = {"fill", "black"};
+        TAttribute attr2 = {"font-size", "12"};
+        TAttributes style = {attr1, attr2};
+        CSVGWriter Writer(Sink, 100, 100);
+        EXPECT_TRUE(Writer.Text(anchor, "Hello", style));
+    }
+    std::cout << Sink->String() << std::endl;
+    EXPECT_EQ(Sink->String(),"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                            "<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">\n"
+                            "<text x=\"10.000000\" y=\"20.000000\" style=\"fill:black;font-size:12\">Hello</text>\n"
+                            "</svg>");
+}

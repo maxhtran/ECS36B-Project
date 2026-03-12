@@ -18,9 +18,9 @@ struct SVG_CONTEXT{
     svg_write_fn write_fn;
     svg_cleanup_fn cleanup_fn;
     svg_user_context_ptr user;
+    int numGroups;
 };
 
-int numGroups = 0;
 
 svg_context_ptr svg_create(svg_write_fn write_fn, 
                            svg_cleanup_fn cleanup_fn, 
@@ -33,6 +33,7 @@ svg_context_ptr svg_create(svg_write_fn write_fn,
     context->write_fn = write_fn;
     context->cleanup_fn = cleanup_fn;
     context->user = user;
+    context->numGroups = 0;
 
     
     char Fbuff[200];
@@ -45,7 +46,7 @@ svg_context_ptr svg_create(svg_write_fn write_fn,
 
 svg_return_t svg_destroy(svg_context_ptr context){
     if (!context) { return SVG_ERR_NULL; }
-    if (numGroups != 0) { return SVG_ERR_STATE; }
+    if (context->numGroups != 0) { return SVG_ERR_STATE; }
     
     context->write_fn(context->user, "</svg>");
     context->cleanup_fn(context->user);
@@ -115,7 +116,7 @@ svg_return_t svg_group_begin(svg_context_ptr context,
 
     if (!attrs) {
         svg_return_t returnCode = context->write_fn(context->user, "<g>");
-        numGroups++;
+        if (returnCode == SVG_OK) context->numGroups++;
         return returnCode;
     }
     else {
@@ -127,7 +128,7 @@ svg_return_t svg_group_begin(svg_context_ptr context,
         }
         else {
             svg_return_t returnCode = context->write_fn(context->user, Fbuff);
-            numGroups++;
+            if (returnCode == SVG_OK) context->numGroups++;
             return returnCode;
         }
     }
@@ -137,6 +138,24 @@ svg_return_t svg_group_end(svg_context_ptr context){
     if (!context) { return SVG_ERR_NULL; }
 
     svg_return_t returnCode = context->write_fn(context->user, "</g>\n");
-    numGroups--;
+    if (returnCode == SVG_OK) context->numGroups--;
     return returnCode;
+}
+
+svg_return_t svg_text(svg_context_ptr context,
+                      const svg_point_t *position,
+                      const char *text,
+                      const char *style) {
+    if (!context || !position || !text) { return SVG_ERR_NULL; }
+    char Fbuff[200];
+    int charCheck = snprintf(Fbuff, sizeof(Fbuff),
+        "<text x=\"%lf\" y=\"%lf\" style=\"%s\">%s</text>\n",
+        position->x, position->y, style, text);
+    if (charCheck >= 200) {
+        return SVG_ERR_INVALID_ARG;
+    }
+    else {
+        svg_return_t returnCode = context->write_fn(context->user, Fbuff);
+        return returnCode;
+    }
 }
