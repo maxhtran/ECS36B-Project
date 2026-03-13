@@ -3,7 +3,18 @@
 
 #include "TripPlanWriter.h"
 #include "StreetMap.h"
-#include <string_view>
+#include "SVGWriter.h"
+#include "StreetMapIndexer.h"
+#include "GeographicUtils.h"
+#include "BusSystemIndexer.h"
+#include <sstream>
+#include <limits>
+#include <vector>
+#include <memory>
+#include <string>
+#include <any>
+#include <unordered_set>
+#include <unordered_map>
 
 class CSVGTripPlanWriter: public CTripPlanWriter{
     private:
