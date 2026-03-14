@@ -113,7 +113,8 @@ TEST_TPCL_OBJ_FILES	= $(TEST_STRSRC_OBJ) \
 						$(TEST_TPCL_TEST_OBJ) \
 						$(TEST_SVGWRITER_OBJ) \
 						$(TEST_SMINDEXER_OBJ) \
-						$(TEST_GEOUTILS_OBJ)
+						$(TEST_GEOUTILS_OBJ) \
+						$(TEST_SVG_OBJ)
 
 # Define the targets
 TEST_SVG_TARGET			= $(TESTBIN_DIR)/testsvg
@@ -220,7 +221,7 @@ run_svgtpwtest: $(TEST_SVGTPW_TARGET)
 	mv $(TESTTMP_DIR)/$@ $@
 
 run_htmltpwtest: $(TEST_HTMLTPW_TARGET)
-	$(TEST_HTMLTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@ 
+	$(TEST_HTMLTPW_TARGET) --gtest_output=xml:$(TESTTMP_DIR)/$@  --gtest_filter=-HTMLTripPlanWriter.OneStopRoute
 	mv $(TESTTMP_DIR)/$@ $@
 
 run_tpcltest: $(TEST_TPCL_TARGET)

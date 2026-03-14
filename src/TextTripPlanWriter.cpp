@@ -82,6 +82,10 @@ struct CTextTripPlanWriter::SImplementation{
         }
         
         for (int i = 0; i < static_cast<int>(plan.size()); i++) {
+            if (!DConfig->FlagEnabled(Verbose) && i > 0 && i != static_cast<int>(plan.size() - 1)) { // if verbose flag is disabled, skip intermediate stops
+                continue;
+            }
+            
             CTripPlanner::STravelStep step = plan[i]; // current step in plan
             
             // * HANDLE TIME *
