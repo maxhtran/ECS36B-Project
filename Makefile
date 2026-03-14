@@ -140,10 +140,56 @@ SVG_OBJ 			= $(OBJ_DIR)/svg.o
 MAIN_OBJ 			= $(OBJ_DIR)/main.o 
 OBJ_FILES 			= $(SVG_OBJ) $(MAIN_OBJ)
 
+TP_STRSINK_OBJ			= $(OBJ_DIR)/StringDataSink.o 
+TP_STRSRC_OBJ			= $(OBJ_DIR)/StringDataSource.o 
+TP_SVGWRITER_OBJ		= $(OBJ_DIR)/SVGWriter.o 
+TP_XML_OBJ				= $(OBJ_DIR)/XMLReader.o 
+TP_XMLBS_OBJ			= $(OBJ_DIR)/XMLBusSystem.o 
+TP_OSM_OBJ				= $(OBJ_DIR)/OpenStreetMap.o 
+TP_STDDATASINK_OBJ		= $(OBJ_DIR)/StandardDataSink.o 
+TP_STDDATASRC_OBJ		= $(OBJ_DIR)/StandardDataSource.o 
+TP_STDERRDATASINK_OBJ	= $(OBJ_DIR)/StandardErrorDataSink.o
+TP_FILEDATASINK_OBJ		= $(OBJ_DIR)/FileDataSink.o 
+TP_FILEDATASRC_OBJ		= $(OBJ_DIR)/FileDataSource.o 
+TP_FILEDATAFACTORY_OBJ	= $(OBJ_DIR)/FileDataFactory.o
+TP_BSINDEXER_OBJ		= $(OBJ_DIR)/BusSystemIndexer.o 
+TP_GEOUTILS_OBJ			= $(OBJ_DIR)/GeographicUtils.o 
+TP_SMINDEXER_OBJ		= $(OBJ_DIR)/StreetMapIndexer.o 
+TP_OBJ 					= $(OBJ_DIR)/TripPlanner.o 
+TP_TEXTTPW_OBJ			= $(OBJ_DIR)/TextTripPlanWriter.o 
+TP_SVGTPW_OBJ			= $(OBJ_DIR)/SVGTripPlanWriter.o 
+TP_HTMLTPW_OBJ			= $(OBJ_DIR)/HTMLTripPlanWriter.o 
+TP_TPCL_OBJ				= $(OBJ_DIR)/TripPlannerCommandLine.o 
+TP_MAIN_OBJ				= $(OBJ_DIR)/tripplannermain.o 
+
+TP_OBJ_FILES 			= $(TP_STRSINK_OBJ) \
+							$(TP_STRSRC_OBJ) \
+							$(TP_SVGWRITER_OBJ) \
+							$(TP_XML_OBJ) \
+							$(TP_XMLBS_OBJ) \
+							$(TP_OSM_OBJ) \
+							$(TP_STDDATASINK_OBJ) \
+							$(TP_STDDATASRC_OBJ) \
+							$(TP_STDERRDATASINK_OBJ) \
+							$(TP_FILEDATASINK_OBJ) \
+							$(TP_FILEDATASRC_OBJ) \
+							$(TP_FILEDATAFACTORY_OBJ) \
+							$(TP_BSINDEXER_OBJ) \
+							$(TP_GEOUTILS_OBJ) \
+							$(TP_SMINDEXER_OBJ) \
+							$(TP_OBJ) \
+							$(TP_TEXTTPW_OBJ) \
+							$(TP_SVGTPW_OBJ) \
+							$(TP_HTMLTPW_OBJ) \
+							$(TP_TPCL_OBJ) \
+							$(TP_MAIN_OBJ)
+
 # Define the targets
 EXECUTABLE 			= $(BIN_DIR)/svg
 CHECKMARK_ANSWER	= expected_checkmark.svg
 CHECKMARK_OUTPUT	= checkmark.svg
+
+TP_EXECUTABLE		= $(BIN_DIR)/tripplanner
 
 all: directories \
 		run_svgtest \
@@ -162,6 +208,7 @@ all: directories \
 		run_svgtpwtest \
 		run_htmltpwtest \
 		run_tpcltest \
+		run_tripplanner \
 		gen_html
 
 run_svgtest: $(TEST_SVG_TARGET)
@@ -309,6 +356,16 @@ $(MAIN_OBJ): $(SRC_DIR)/main.c
 $(LIB_DIR)/libsvg.a: $(SVG_OBJ)
 	$(AR) $(ARFLAGS) $(LIB_DIR)/libsvg.a $(SVG_OBJ)
 
+
+run_tripplanner: $(TP_EXECUTABLE)
+	$(TP_EXECUTABLE)
+
+$(TP_EXECUTABLE): $(TP_OBJ_FILES) $(LIB_DIR)/libsvg.a 
+	$(CXX) $(CFLAGS) $(CPPFLAGS) $(TP_OBJ_FILES) $(LIB_DIR)/libsvg.a $(LDFLAGS) -o $(TP_EXECUTABLE)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp 
+	$(CXX) $(CFLAGS) $(CPPFLAGS) $(DEFINES) $(INCLUDE) -c $< -o $@
+
 runcheckmark: $(EXECUTABLE)
 	$(EXECUTABLE) 
 	@xmldiff --check $(CHECKMARK_OUTPUT) $(CHECKMARK_ANSWER) > /dev/null 2>&1 && echo "SVGs are identical ✅" || (echo "SVGs differ ❌"; exit 1)
@@ -321,6 +378,7 @@ directories:
 	mkdir -p $(TESTOBJ_DIR)
 	mkdir -p $(TESTBIN_DIR)
 	mkdir -p $(TESTCOVER_DIR)
+	mkdir -p $(TESTTMP_DIR)
 
 clean:
 	rm -rf $(BIN_DIR)
@@ -329,4 +387,5 @@ clean:
 	rm -rf $(TESTOBJ_DIR)
 	rm -rf $(TESTBIN_DIR)
 	rm -rf $(TESTCOVER_DIR)
+	rm -rf $(TESTTMP_DIR)
 	rm -f run_*
