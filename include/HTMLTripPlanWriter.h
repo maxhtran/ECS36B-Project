@@ -1,8 +1,11 @@
 #ifndef HTMLTRIPWRITER_H
 #define HTMLTRIPWRITER_H
 
+#include "StringDataSink.h"
 #include "TripPlanWriter.h"
 #include "StreetMap.h"
+#include "SVGTripPlanWriter.h"
+#include "TextTripPlanWriter.h"
 #include <string_view>
 
 class CHTMLTripPlanWriter: public CTripPlanWriter{
