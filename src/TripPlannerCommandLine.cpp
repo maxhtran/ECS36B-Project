@@ -178,7 +178,7 @@ struct CTripPlannerCommandLine::SImplementation{
                 }
 
                 else if (Arguments[0] == DToggleCommand) {
-                    if (Arguments.size() != 2) { // if there isn't exactly one parameter given for command
+                    if (Arguments.size() != 2) { // if there isn't exactly one argument given for command
                         OutputError("Invalid toggle command, see help.\n");
                     } else {
                         std::string flag = Arguments[1];
@@ -375,19 +375,19 @@ struct CTripPlannerCommandLine::SImplementation{
                 }
 
                 else if (Arguments[0] == DSaveCommand) {
-                    if (!DLastPlanExist) {
+                    if (!DLastPlanExist) { // if no plan has been made yet
                         OutputError("No valid trip to save, see help.\n");
                     } else {
-                        std::string minutes_str = std::to_string(DLastTime.hours().count() * 60 + DLastTime.minutes().count());
-                        std::string filename = DLAOrAB + "_" + minutes_str + "_" + std::to_string(DLastSrc) + "_" + std::to_string(DLastDest) + ".html";
-                        std::shared_ptr<CDataSink> file = DResultsFactory->CreateSink(filename);
-                        DStorageWriter->WritePlan(file, DLastPlan);
+                        std::string minutes_str = std::to_string(DLastTime.hours().count() * 60 + DLastTime.minutes().count()); // get minutes since midnight for filename
+                        std::string filename = DLAOrAB + "_" + minutes_str + "_" + std::to_string(DLastSrc) + "_" + std::to_string(DLastDest) + ".html"; // put together filename
+                        std::shared_ptr<CDataSink> file = DResultsFactory->CreateSink(filename); // create file to write to
+                        DStorageWriter->WritePlan(file, DLastPlan); // write the plan to the file
 
-                        OutputString("Trip saved to <results>/" + filename + "\n");
+                        OutputString("Trip saved to <results>/" + filename + "\n"); // output confirmation message
                     }
                 }
 
-                else {
+                else { // if command is invalid
                     OutputError("Unknown command \"" + Arguments[0] + "\" type help for help.\n");
                 }
             }

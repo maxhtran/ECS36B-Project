@@ -33,19 +33,19 @@ struct CBusSystemIndexer::SImplementation{
         }
         
         size_t FindStopIndex(TStopID stopid, size_t start) const override{
-            for (int index = start; index < static_cast<int>(StopCount()); index++) {
+            for (int index = start; index < static_cast<int>(StopCount()); index++) { // start searching at "start"
                 if (GetStopID(index) == stopid) {
                     return index;
                 }
             }
             
-            return std::numeric_limits<size_t>::max();
+            return std::numeric_limits<size_t>::max(); // if stop index can't be found
         }
 
         std::vector< TStopID > StopIDsSourceDestination(TStopID src, TStopID dest) const override{
             std::vector<TStopID> stops_to_return;
 
-            for (int index = FindStopIndex(src, 0) + 1; GetStopID(index) != dest; index++) {
+            for (int index = FindStopIndex(src, 0) + 1; GetStopID(index) != dest; index++) { // start vector at one after the src stop; end vector at one before the dest stop
                 stops_to_return.push_back(GetStopID(index));
             }
 
@@ -160,16 +160,18 @@ struct CBusSystemIndexer::SImplementation{
     }
 
     bool StopIDsByRoutes(const std::string &route1, const std::string &route2, std::unordered_set< TStopID > &stops) const noexcept{
+        // find both routes
         auto Route1 = DRoutesByName.find(route1);
         auto Route2 = DRoutesByName.find(route2);
 
-        if (Route1 != DRoutesByName.end() && Route2 != DRoutesByName.end()) {
+        if (Route1 != DRoutesByName.end() && Route2 != DRoutesByName.end()) { // if both routes have been found
+            // get both routes' indexers
             auto Route1Indexer = Route1->second;
             auto Route2Indexer = Route2->second;
 
             for (int i = 0; i < static_cast<int>(Route1Indexer->StopCount()); i++) {
                 for (int j = 0; j < static_cast<int>(Route2Indexer->StopCount()); j++) {
-                    if (Route1Indexer->GetStopID(i) == Route2Indexer->GetStopID(j)) {
+                    if (Route1Indexer->GetStopID(i) == Route2Indexer->GetStopID(j)) { // if a stop is found in both routes
                         stops.insert(Route2Indexer->GetStopID(j));
                     }
                 }
@@ -178,7 +180,7 @@ struct CBusSystemIndexer::SImplementation{
             return true;
         }
 
-        return false;
+        return false; // if one or both routes were unable to be found
     }
 
 };
